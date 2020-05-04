@@ -6,7 +6,6 @@ import org.marshalov.telekot.client.model.inline.InlineQueryResult
  * Interface for Inline Telegram Bot API (https://core.telegram.org/bots/api#inline-mode).
  */
 interface InlineBotApiClient {
-
     /**
      * Use this method to send answers to an inline query (https://core.telegram.org/bots/api#answerinlinequery).
      * No more than 50 results per query are allowed.
@@ -28,5 +27,4 @@ interface InlineBotApiClient {
         switchPmText: String? = null,
         switchPmParameter: String? = null
     ): Boolean
-
 }

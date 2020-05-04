@@ -1,13 +1,16 @@
 package org.marshalov.telekot.client.api
 
-import org.marshalov.telekot.client.model.*
+import org.marshalov.telekot.client.model.BotCommand
+import org.marshalov.telekot.client.model.Chat
+import org.marshalov.telekot.client.model.File
+import org.marshalov.telekot.client.model.Message
+import org.marshalov.telekot.client.model.User
 import org.marshalov.telekot.client.model.markers.ReplyMarkup
 
 /**
  * Interface for Common Telegram Bot API (https://core.telegram.org/bots/api#available-methods).
  */
 interface CommonBotApiClient {
-
     /**
      * A simple method for testing your bot's auth token. Requires no parameters.
      * @return basic information about the bot in form of a User object.
@@ -95,6 +98,7 @@ interface CommonBotApiClient {
      * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return sent Message
      */
+    @Suppress("LongParameterList")
     suspend fun sendAudio(
         chatId: String,
         // @TODO: Add binary file for uploading by multipart/form-data
@@ -203,5 +207,4 @@ interface CommonBotApiClient {
      * @returns List of BotCommand on success.
      */
     suspend fun getMyCommands(): List<BotCommand>
-
 }

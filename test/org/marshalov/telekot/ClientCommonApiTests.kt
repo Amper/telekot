@@ -7,7 +7,6 @@ import org.marshalov.telekot.client.BotApiClient
 
 class ClientCommonApiTests : StringSpec({
     runBlocking {
-
         val token = System.getenv("TEST_TELEGRAM_BOT_TOKEN") ?: return@runBlocking
         val api = BotApiClient(token).commonApi
 
@@ -21,6 +20,5 @@ class ClientCommonApiTests : StringSpec({
             val chat = api.getChat("@telegram")
             chat.username shouldBe "telegram"
         }
-
     }
 })

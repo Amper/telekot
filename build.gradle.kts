@@ -1,5 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.time.Instant
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val group: String by project
 val version: String by project
@@ -12,6 +12,7 @@ val kotestVersion: String by project
 val mockkVersion: String by project
 val detektVersion: String by project
 val jacocoVersion: String by project
+val junitVersion: String by project
 val author: String by project
 
 description = "Library for creating Telegram bots."
@@ -22,6 +23,7 @@ plugins {
     kotlin("plugin.serialization")
     id("org.jetbrains.dokka")
     id("io.gitlab.arturbosch.detekt")
+    id("org.jlleitschuh.gradle.ktlint")
     jacoco
 }
 
@@ -46,12 +48,16 @@ dependencies {
     implementation("io.ktor:ktor-client-logging-jvm:$ktorVersion")
     implementation("io.ktor:ktor-serialization:$ktorVersion")
     implementation("io.github.microutils:kotlin-logging:$loggingVersion")
+    testImplementation(kotlin("test", kotlinVersion))
+    testImplementation(kotlin("test-junit5", kotlinVersion))
     testImplementation("io.ktor:ktor-client-mock:$ktorVersion")
     testImplementation("io.ktor:ktor-client-mock-jvm:$ktorVersion")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
     testImplementation("io.kotest:kotest-extensions-allure-jvm:$kotestVersion")
     testImplementation("io.mockk:mockk:$mockkVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
 
 tasks {
@@ -64,13 +70,23 @@ tasks {
     }
     check {
         dependsOn(jacocoTestCoverageVerification)
+        dependsOn(jacocoTestReport)
+        dependsOn(detekt)
+    }
+    jacocoTestReport {
+        reports {
+            xml.isEnabled = true
+            html.isEnabled = true
+        }
     }
     jacoco {
         toolVersion = jacocoVersion
     }
     detekt {
         toolVersion = detektVersion
+        input = files("src")
         config = files("${rootProject.projectDir}/detekt.yml")
+        parallel = true
     }
     jar {
         manifest {

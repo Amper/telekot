@@ -19,7 +19,7 @@ class BotApiClientImpl(
     apiUrl: String? = null,
     client: HttpClient? = null
 ) : BotApiClient {
-    private val httpClient = client ?: HttpClientFactory.createHttpClient()
+    private val httpClient: HttpClient = client ?: HttpClientFactory.createHttpClient()
     override val commonApi: CommonBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
     override val updatesApi: UpdatesBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
     override val inlineApi: InlineBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)

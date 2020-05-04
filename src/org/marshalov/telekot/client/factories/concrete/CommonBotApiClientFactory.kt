@@ -8,9 +8,6 @@ import org.marshalov.telekot.client.factories.ApiClientFactory
 object CommonBotApiClientFactory :
     ApiClientFactory<CommonBotApiClient> {
 
-    init {
-    }
-
     override fun createApiClient(
         apiToken: String,
         apiUrl: String?,

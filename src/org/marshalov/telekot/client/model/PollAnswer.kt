@@ -19,5 +19,5 @@ data class PollAnswer(
     /**
      * 0-based identifiers of answer options, chosen by the user. May be empty if the user retracted their vote.
      */
-    val option_ids: List<Int> = emptyList()
+    val optionIds: List<Int> = emptyList()
 ) : TelegramObject

@@ -41,5 +41,4 @@ class InlineBotApiClientImpl(
     // ------------------------------------------------------------------------------------------------------------- //
 
     private val api = ApiClientWrapper(apiToken, apiUrl, client)
-
 }

@@ -23,7 +23,7 @@ data class CallbackQuery(
      * Global identifier, uniquely corresponding to the chat to which the message with the callback button was sent.
      * Useful for high scores in games.
      */
-    val chat_instance: String = "",
+    val chatInstance: String = "",
     /**
      * Optional. Message with the callback button that originated the query.
      * Note that message content and message date will not be available if the message is too old

@@ -12,5 +12,4 @@ class TelegramApiError(
     val errorCode: Int?,
     message: String?
 ) :
-    RuntimeException("Telegram API error `$errorCode` for method `$method`: $message") {
-}
+    RuntimeException("Telegram API error `$errorCode` for method `$method`: $message")

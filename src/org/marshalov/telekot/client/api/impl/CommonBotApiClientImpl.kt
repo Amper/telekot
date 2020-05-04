@@ -3,7 +3,11 @@ package org.marshalov.telekot.client.api.impl
 import io.ktor.client.HttpClient
 import org.marshalov.telekot.client.api.ApiClientWrapper
 import org.marshalov.telekot.client.api.CommonBotApiClient
-import org.marshalov.telekot.client.model.*
+import org.marshalov.telekot.client.model.BotCommand
+import org.marshalov.telekot.client.model.Chat
+import org.marshalov.telekot.client.model.File
+import org.marshalov.telekot.client.model.Message
+import org.marshalov.telekot.client.model.User
 import org.marshalov.telekot.client.model.markers.ReplyMarkup
 
 /**
@@ -144,9 +148,7 @@ class CommonBotApiClientImpl(
     override suspend fun getMyCommands(): List<BotCommand> =
         api.getMethodResult(::getMyCommands)
 
-
     // ------------------------------------------------------------------------------------------------------------- //
 
     private val api = ApiClientWrapper(apiToken, apiUrl, client)
-
 }

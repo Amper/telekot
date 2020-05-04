@@ -58,5 +58,4 @@ class UpdatesBotApiClientImpl(
     // ------------------------------------------------------------------------------------------------------------- //
 
     private val api = ApiClientWrapper(apiToken, apiUrl, client)
-
 }

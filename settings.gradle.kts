@@ -11,6 +11,7 @@ pluginManagement {
         kotlin("plugin.serialization") version kotlinVersion
         id("io.gitlab.arturbosch.detekt") version detektVersion
         id("org.jetbrains.dokka") version dokkaVersion
+        id("org.jlleitschuh.gradle.ktlint") version ktlintPluginVersion
     }
 
     repositories {
@@ -21,4 +22,3 @@ pluginManagement {
         maven { url = uri("https://plugins.gradle.org/m2/") }
     }
 }
-

@@ -4,11 +4,11 @@ import io.ktor.client.HttpClient
 import io.ktor.client.request.post
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
+import kotlin.reflect.KClass
+import kotlin.reflect.KFunction
 import org.marshalov.telekot.client.exceptions.TelegramApiError
 import org.marshalov.telekot.client.factories.HttpClientFactory
 import org.marshalov.telekot.client.model.Response
-import kotlin.reflect.KClass
-import kotlin.reflect.KFunction
 
 /**
  * Wrapper for making requests to Telegram API.
@@ -94,5 +94,4 @@ class ApiClientWrapper(
     companion object {
         const val DEFAULT_API_URL = "https://api.telegram.org"
     }
-
 }

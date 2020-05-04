@@ -36,5 +36,5 @@ data class WebhookInfo(
      * Optional. A list of update types the bot is subscribed to. Defaults to all update types
      */
     // @TODO: enum
-    val allowed_updates: List<String>? = null
+    val allowedUpdates: List<String>? = null
 ) : TelegramObject

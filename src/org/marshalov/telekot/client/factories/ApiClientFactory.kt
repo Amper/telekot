@@ -6,7 +6,6 @@ import io.ktor.client.HttpClient
  * Interface for factories of other Telegram API clients.
  */
 interface ApiClientFactory<T : Any> {
-
     /**
      * Create Telegram API Client for generic interface.
      * @param apiToken Unique authentification token (https://core.telegram.org/bots/api#authorizing-your-bot)
@@ -19,5 +18,4 @@ interface ApiClientFactory<T : Any> {
         apiUrl: String? = null,
         client: HttpClient? = null
     ): T
-
 }

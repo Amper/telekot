@@ -13,7 +13,6 @@ import org.marshalov.telekot.client.factories.BotApiClientFactory
  * @property inlineApi Interface for accessing Inline Mode Telegram API (https://core.telegram.org/bots/api#inline-mode)
  */
 interface BotApiClient {
-
     /**
      * Interface for accessing Common Telegram API (https://core.telegram.org/bots/api#available-methods)
      */
@@ -44,5 +43,4 @@ interface BotApiClient {
         ): BotApiClient =
             BotApiClientFactory.createApiClient(apiToken, apiUrl, client)
     }
-
 }
