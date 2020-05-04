@@ -6,22 +6,35 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/Amper/telekot)
 ![GitHub](https://img.shields.io/github/license/Amper/telekot)
 
-**telekot** is a kotlin library for creating [Telegram](https//telegram.org) bots.
+🤖 **telekot** is a kotlin library for creating [Telegram](https://telegram.org) bots.
 
 **`Warning!` This project is currently under active development and is not yet ready for use.**
 
-## Usage
+## ⌨️ Usage
 
 ...
 
-## Documentation
+## 📋 Documentation
 
 ...
 
-## Contributing
+## ✏️ Contributing
 
-...
+To get started, please fork the repo and checkout a new branch. 
+You can then build the library locally with Gradle
 
-## License
+```shell script
+gradle clean build
+```
 
-This library is licensed under the Apache License, Version 2.0.
+See more info in [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## 🔒 Security
+
+To report a potential vulnerability in telekot please use the [security advisory feature of GitHub](https://github.com/Amper/telekot/security/advisories).
+
+See more info in [SECURITY.md](SECURITY.md)
+
+## ⚖️ License
+
+This library is licensed under the [Apache License, Version 2.0](LICENSE)

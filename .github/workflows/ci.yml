@@ -16,11 +16,12 @@ jobs:
     strategy:
       matrix:
         java:
-          - 8
           - 11.0.x
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v2
+      - name: Gradle Wrapper Validate
+        uses: gradle/wrapper-validation-action@v1
       - name: Set up Java ${{ matrix.java }}
         uses: actions/setup-java@v1
         with:
@@ -37,6 +38,13 @@ jobs:
         run: gradle clean build
         env:
           TEST_TELEGRAM_BOT_TOKEN: ${{ secrets.TEST_TELEGRAM_BOT_TOKEN }}
+      - name: Bundle the build report
+        run: find . -type d -name 'reports' | zip -@ -r reports.zip
+      - name: Upload the build report
+        uses: actions/upload-artifact@master
+        with:
+          name: report
+          path: reports.zip
       - name: Upload coverage to Codecov
         if: matrix.java != 8
         uses: codecov/codecov-action@v1
