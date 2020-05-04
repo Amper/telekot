@@ -8,7 +8,8 @@ import org.marshalov.telekot.client.BotApiClient
 class ClientCommonApiTests : StringSpec({
     runBlocking {
 
-        val api = BotApiClient(System.getenv("TEST_TELEGRAM_BOT_TOKEN")).commonApi
+        val token = System.getenv("TEST_TELEGRAM_BOT_TOKEN") ?: return@runBlocking
+        val api = BotApiClient(token).commonApi
 
         "check getMe" {
             val user = api.getMe()

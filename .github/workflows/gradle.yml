@@ -25,3 +25,5 @@ jobs:
 
     - name: Build with Gradle
       run: gradle build
+      env:
+        TEST_TELEGRAM_BOT_TOKEN: ${{ secrets.TEST_TELEGRAM_BOT_TOKEN }}

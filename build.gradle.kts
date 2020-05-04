@@ -18,7 +18,6 @@ description = "Library for creating Telegram bots."
 extra["isReleaseVersion"] = !version.endsWith("SNAPSHOT")
 
 plugins {
-    application
     kotlin("jvm")
     kotlin("plugin.serialization")
     id("org.jetbrains.dokka")
