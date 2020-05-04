@@ -11,7 +11,7 @@ import org.marshalov.telekot.client.model.markers.TelegramObject
  * Currently, only .PDF and .ZIP files can be sent using this method.
  */
 @Serializable
-class InlineQueryResultDocument(
+data class InlineQueryResultDocument(
     /**
      * Type of the result, must be document
      */
