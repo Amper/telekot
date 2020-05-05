@@ -3,6 +3,7 @@ package org.marshalov.telekot.client.api
 import org.marshalov.telekot.client.model.BotCommand
 import org.marshalov.telekot.client.model.Chat
 import org.marshalov.telekot.client.model.File
+import org.marshalov.telekot.client.model.InlineKeyboardMarkup
 import org.marshalov.telekot.client.model.Message
 import org.marshalov.telekot.client.model.User
 import org.marshalov.telekot.client.model.markers.InputMediaPhotoOrVideo
@@ -306,6 +307,42 @@ interface CommonBotApiClient {
         disableNotification: Boolean? = null,
         replyToMessageId: Int? = null,
         replyMarkup: ReplyMarkup? = null
+    ): Message
+
+    /**
+     * Use this method to edit live location messages (https://core.telegram.org/bots/api#editmessagelivelocation).
+     * A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation.
+     * @param latitude Latitude of new location
+     * @param longitude Longitude of new location
+     * @param chatId Required if inlineMessageId is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param messageId Required if inlineMessageId is not specified. Identifier of the message to edit
+     * @param inlineMessageId Required if chatId and messageId are not specified. Identifier of the inline message
+     * @param replyMarkup A JSON-serialized object for a new inline keyboard.
+     * @return the edited Message
+     */
+    suspend fun editMessageLiveLocation(
+        latitude: Float,
+        longitude: Float,
+        chatId: String? = null,
+        messageId: Int? = null,
+        inlineMessageId: String? = null,
+        replyMarkup: InlineKeyboardMarkup? = null
+    ): Message
+
+    /**
+     * Use this method to stop updating a live location message before live_period expires
+     * (https://core.telegram.org/bots/api#stopmessagelivelocation).
+     * @param chatId Required if inlineMessageId is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param messageId Required if inlineMessageId is not specified. Identifier of the message with live location to stop
+     * @param inlineMessageId Required if chatId and messageId are not specified. Identifier of the inline message
+     * @param replyMarkup A JSON-serialized object for a new inline keyboard.
+     * @return the sent Message
+     */
+    suspend fun stopMessageLiveLocation(
+        chatId: Int? = null,
+        messageId: Int? = null,
+        inlineMessageId: String? = null,
+        replyMarkup: InlineKeyboardMarkup? = null
     ): Message
 
     /**

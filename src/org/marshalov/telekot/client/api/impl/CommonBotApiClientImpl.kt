@@ -6,6 +6,7 @@ import org.marshalov.telekot.client.api.CommonBotApiClient
 import org.marshalov.telekot.client.model.BotCommand
 import org.marshalov.telekot.client.model.Chat
 import org.marshalov.telekot.client.model.File
+import org.marshalov.telekot.client.model.InlineKeyboardMarkup
 import org.marshalov.telekot.client.model.Message
 import org.marshalov.telekot.client.model.User
 import org.marshalov.telekot.client.model.markers.InputMediaPhotoOrVideo
@@ -273,6 +274,40 @@ class CommonBotApiClientImpl(
                 "live_period" to livePeriod,
                 "disable_notification" to disableNotification,
                 "reply_to_message_id" to replyToMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
+    override suspend fun editMessageLiveLocation(
+        latitude: Float,
+        longitude: Float,
+        chatId: String?,
+        messageId: Int?,
+        inlineMessageId: String?,
+        replyMarkup: InlineKeyboardMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::editMessageLiveLocation, mapOf(
+                "latitude" to latitude,
+                "longitude" to longitude,
+                "chat_id" to chatId,
+                "message_id" to messageId,
+                "inline_message_id" to inlineMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
+    override suspend fun stopMessageLiveLocation(
+        chatId: Int?,
+        messageId: Int?,
+        inlineMessageId: String?,
+        replyMarkup: InlineKeyboardMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::stopMessageLiveLocation, mapOf(
+                "chat_id" to chatId,
+                "message_id" to messageId,
+                "inline_message_id" to inlineMessageId,
                 "reply_markup" to replyMarkup
             )
         )
