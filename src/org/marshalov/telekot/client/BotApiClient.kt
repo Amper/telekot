@@ -3,6 +3,7 @@ package org.marshalov.telekot.client
 import io.ktor.client.HttpClient
 import org.marshalov.telekot.client.api.CommonBotApiClient
 import org.marshalov.telekot.client.api.InlineBotApiClient
+import org.marshalov.telekot.client.api.PaymentsBotApiClient
 import org.marshalov.telekot.client.api.UpdatesBotApiClient
 import org.marshalov.telekot.client.factories.BotApiClientFactory
 
@@ -27,6 +28,11 @@ interface BotApiClient {
      * Interface for accessing Inline Mode Telegram API (https://core.telegram.org/bots/api#inline-mode)
      */
     val inlineApi: InlineBotApiClient
+
+    /**
+     * Interface for accessing Payments Telegram API (https://core.telegram.org/bots/api#payments)
+     */
+    val paymentsApi: PaymentsBotApiClient
 
     companion object {
         /**

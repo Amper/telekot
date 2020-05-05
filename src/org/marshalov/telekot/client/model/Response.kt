@@ -23,5 +23,9 @@ data class Response<T : Any>(
     /**
      * An Integer ‘error_code’ field is also returned, but its contents are subject to change in the future.
      */
-    val errorCode: Int? = null
+    val errorCode: Int? = null,
+    /**
+     * Optional field ‘parameters’ for some errors, which can help to automatically handle the error.
+     */
+    val parameters: ResponseParameters? = null
 )
