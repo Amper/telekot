@@ -362,6 +362,43 @@ class CommonBotApiClientImpl(
             )
         )
 
+    override suspend fun sendPoll(
+        chatId: String,
+        question: String,
+        options: List<String>,
+        isAnonymous: Boolean?,
+        type: String?,
+        allowsMultipleAnswers: Boolean?,
+        correctOptionId: Int?,
+        explanation: String?,
+        explanationParseMode: String?,
+        openPeriod: Int?,
+        closeDate: Int?,
+        isClosed: Boolean?,
+        disableNotification: Boolean?,
+        replyToMessageId: Int?,
+        replyMarkup: ReplyMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::sendPoll, mapOf(
+                "chat_id" to chatId,
+                "question" to question,
+                "options" to options,
+                "is_anonymous" to isAnonymous,
+                "type" to type,
+                "allows_multiple_answers" to allowsMultipleAnswers,
+                "correct_option_id" to correctOptionId,
+                "explanation" to explanation,
+                "explanation_parse_mode" to explanationParseMode,
+                "open_period" to openPeriod,
+                "close_date" to closeDate,
+                "is_closed" to isClosed,
+                "disable_notification" to disableNotification,
+                "reply_to_message_id" to replyToMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
     override suspend fun sendChatAction(chatId: String, action: String): Boolean =
         api.getMethodResult(::sendChatAction, mapOf("chat_id" to chatId, "action" to action))
 
