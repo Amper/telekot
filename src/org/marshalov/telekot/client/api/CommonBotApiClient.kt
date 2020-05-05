@@ -433,6 +433,26 @@ interface CommonBotApiClient {
     ): Message
 
     /**
+     * Use this method to send a dice, which will have a random value from 1 to 6.
+     * (https://core.telegram.org/bots/api#senddice)
+     * (Yes, we're aware of the “proper” singular of die.
+     * But it's awkward, and we decided to help it change. One dice at a time!)
+     * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param emoji Emoji on which the dice throw animation is based. Currently, must be one of “🎲” or “🎯”. Defauts to “🎲”
+     * @param disableNotification Sends the message silently. Users will receive a notification with no sound.
+     * @param replyToMessageId If the message is a reply, ID of the original message
+     * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+     * @return send Message
+     */
+    suspend fun sendDice(
+        chatId: String,
+        emoji: String? = null,
+        disableNotification: Boolean? = null,
+        replyToMessageId: Int? = null,
+        replyMarkup: ReplyMarkup? = null
+    ): Message
+
+    /**
      * Use this method when you need to tell the user that something is happening on the bot's side.
      * The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
      * We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.

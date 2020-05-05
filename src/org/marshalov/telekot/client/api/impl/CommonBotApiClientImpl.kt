@@ -399,6 +399,23 @@ class CommonBotApiClientImpl(
             )
         )
 
+    override suspend fun sendDice(
+        chatId: String,
+        emoji: String?,
+        disableNotification: Boolean?,
+        replyToMessageId: Int?,
+        replyMarkup: ReplyMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::sendDice, mapOf(
+                "chat_id" to chatId,
+                "emoji" to emoji,
+                "disable_notification" to disableNotification,
+                "reply_to_message_id" to replyToMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
     override suspend fun sendChatAction(chatId: String, action: String): Boolean =
         api.getMethodResult(::sendChatAction, mapOf("chat_id" to chatId, "action" to action))
 
