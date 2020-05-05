@@ -444,17 +444,42 @@ class CommonBotApiClientImpl(
     override suspend fun getFile(
         fileId: String
     ): File =
-        api.getMethodResult(::getFile, mapOf("file_id" to fileId))
+        api.getMethodResult(
+            ::getFile, mapOf(
+                "file_id" to fileId
+            )
+        )
+
+    override suspend fun kickChatMember(
+        chatId: String,
+        userId: Int,
+        untilDate: Int?
+    ): Boolean =
+        api.getMethodResult(
+            ::kickChatMember, mapOf(
+                "chat_id" to chatId,
+                "user_id" to userId,
+                "until_date" to untilDate
+            )
+        )
 
     override suspend fun getChat(
         chatId: String
     ): Chat =
-        api.getMethodResult(::getChat, mapOf("chat_id" to chatId))
+        api.getMethodResult(
+            ::getChat, mapOf(
+                "chat_id" to chatId
+            )
+        )
 
     override suspend fun setMyCommands(
         commands: List<BotCommand>
     ): Boolean =
-        api.getMethodResult(::setMyCommands, mapOf("commands" to commands))
+        api.getMethodResult(
+            ::setMyCommands, mapOf(
+                "commands" to commands
+            )
+        )
 
     override suspend fun getMyCommands(): List<BotCommand> =
         api.getMethodResult(::getMyCommands)

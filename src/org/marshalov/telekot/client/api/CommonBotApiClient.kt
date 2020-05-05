@@ -474,6 +474,7 @@ interface CommonBotApiClient {
 
     /**
      * Use this method to get a list of profile pictures for a user.
+     * (https://core.telegram.org/bots/api#getuserprofilephotos)
      * @param userId Unique identifier of the target user
      * @param offset Sequential number of the first photo to be returned. By default, all photos are returned.
      * @param limit Limits the number of photos to be retrieved. Values between 1-100 are accepted. Defaults to 100.
@@ -498,6 +499,23 @@ interface CommonBotApiClient {
     suspend fun getFile(
         fileId: String
     ): File
+
+    /**
+     * Use this method to kick a user from a group, a supergroup or a channel.
+     * (https://core.telegram.org/bots/api#kickchatmember)
+     * In the case of supergroups and channels, the user will not be able to return to the group
+     * on their own using invite links, etc., unless unbanned first.
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     * @param chatId Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
+     * @param userId Unique identifier of the target user
+     * @param untilDate Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever
+     * @return True on success
+     */
+    suspend fun kickChatMember(
+        chatId: String,
+        userId: Int,
+        untilDate: Int? = null
+    ): Boolean
 
     /**
      * Use this method to get up to date information about the chat
