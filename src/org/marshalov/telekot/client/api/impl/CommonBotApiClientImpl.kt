@@ -5,6 +5,7 @@ import org.marshalov.telekot.client.api.ApiClientWrapper
 import org.marshalov.telekot.client.api.CommonBotApiClient
 import org.marshalov.telekot.client.model.BotCommand
 import org.marshalov.telekot.client.model.Chat
+import org.marshalov.telekot.client.model.ChatMember
 import org.marshalov.telekot.client.model.ChatPermissions
 import org.marshalov.telekot.client.model.File
 import org.marshalov.telekot.client.model.InlineKeyboardMarkup
@@ -629,6 +630,72 @@ class CommonBotApiClientImpl(
         api.getMethodResult(
             ::getChat, mapOf(
                 "chat_id" to chatId
+            )
+        )
+
+    override suspend fun getChatAdministrators(
+        chatId: String
+    ): List<ChatMember> =
+        api.getMethodResult(
+            ::getChatAdministrators, mapOf(
+                "chat_id" to chatId
+            )
+        )
+
+    override suspend fun getChatMembersCount(
+        chatId: String
+    ): Int =
+        api.getMethodResult(
+            ::getChatMembersCount, mapOf(
+                "chat_id" to chatId
+            )
+        )
+
+    override suspend fun getChatMember(
+        chatId: String,
+        userId: Long
+    ): ChatMember =
+        api.getMethodResult(
+            ::getChatMember, mapOf(
+                "chat_id" to chatId,
+                "user_id" to userId
+            )
+        )
+
+    override suspend fun setChatStickerSet(
+        chatId: String,
+        stickerSetName: String
+    ): Boolean =
+        api.getMethodResult(
+            ::setChatStickerSet, mapOf(
+                "chat_id" to chatId,
+                "stickerSetName" to stickerSetName
+            )
+        )
+
+    override suspend fun deleteChatStickerSet(
+        chatId: String
+    ): Boolean =
+        api.getMethodResult(
+            ::deleteChatStickerSet, mapOf(
+                "chat_id" to chatId
+            )
+        )
+
+    override suspend fun answerCallbackQuery(
+        callbackQueryId: String,
+        text: String?,
+        showAlert: Boolean?,
+        url: String?,
+        cacheTime: Int?
+    ): Boolean =
+        api.getMethodResult(
+            ::answerCallbackQuery, mapOf(
+                "callback_query_id" to callbackQueryId,
+                "text" to text,
+                "show_alert" to showAlert,
+                "url" to url,
+                "cache_time" to cacheTime
             )
         )
 

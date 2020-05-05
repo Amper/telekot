@@ -2,6 +2,7 @@ package org.marshalov.telekot.client.api
 
 import org.marshalov.telekot.client.model.BotCommand
 import org.marshalov.telekot.client.model.Chat
+import org.marshalov.telekot.client.model.ChatMember
 import org.marshalov.telekot.client.model.ChatPermissions
 import org.marshalov.telekot.client.model.File
 import org.marshalov.telekot.client.model.InlineKeyboardMarkup
@@ -723,6 +724,79 @@ interface CommonBotApiClient {
     suspend fun getChat(
         chatId: String
     ): Chat
+
+    /**
+     * Use this method to get a list of administrators in a chat (https://core.telegram.org/bots/api#getchatadministrators).
+     * @param chatId Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+     * @return an Array of ChatMember objects that contains information about all chat administrators except other bots.
+     *  If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.
+     */
+    suspend fun getChatAdministrators(
+        chatId: String
+    ): List<ChatMember>
+
+    /**
+     * Use this method to get the number of members in a chat (https://core.telegram.org/bots/api#getchatmemberscount).
+     * @param chatId Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+     * @return Int on success.
+     */
+    suspend fun getChatMembersCount(
+        chatId: String
+    ): Int
+
+    /**
+     * Use this method to get information about a member of a chat (https://core.telegram.org/bots/api#getchatmember).
+     * @param chatId Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+     * @param userId Unique identifier of the target user
+     * @return a ChatMember object on success.
+     */
+    suspend fun getChatMember(
+        chatId: String,
+        userId: Long
+    ): ChatMember
+
+    /**
+     * Use this method to set a new group sticker set for a supergroup (https://core.telegram.org/bots/api#setchatstickerset).
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     * Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method.
+     * @param chatId Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     * @param stickerSetName Name of the sticker set to be set as the group sticker set
+     * @return True on success.
+     */
+    suspend fun setChatStickerSet(
+        chatId: String,
+        stickerSetName: String
+    ): Boolean
+
+    /**
+     * Use this method to delete a group sticker set from a supergroup (https://core.telegram.org/bots/api#deletechatstickerset).
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     * Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method.
+     * @param chatId Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     * @return True on success.
+     */
+    suspend fun deleteChatStickerSet(
+        chatId: String
+    ): Boolean
+
+    /**
+     * Use this method to send answers to callback queries sent from inline keyboards.
+     * (https://core.telegram.org/bots/api#answercallbackquery)
+     * The answer will be displayed to the user as a notification at the top of the chat screen or as an alert.
+     * @param callbackQueryId Unique identifier for the query to be answered
+     * @param text Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters
+     * @param showAlert If true, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.
+     * @param url URL that will be opened by the user's client. If you have created a Game and accepted the conditions via @Botfather, specify the URL that opens your game — note that this will only work if the query comes from a callback_game button. Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
+     * @param cacheTime The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
+     * @return True on success.
+     */
+    suspend fun answerCallbackQuery(
+        callbackQueryId: String,
+        text: String? = null,
+        showAlert: Boolean? = null,
+        url: String? = null,
+        cacheTime: Int? = null
+    ): Boolean
 
     /**
      * Use this method to change the list of the bot's commands (https://core.telegram.org/bots/api#setmycommands).
