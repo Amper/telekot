@@ -2,6 +2,7 @@ package org.marshalov.telekot.client.api
 
 import org.marshalov.telekot.client.model.BotCommand
 import org.marshalov.telekot.client.model.Chat
+import org.marshalov.telekot.client.model.ChatPermissions
 import org.marshalov.telekot.client.model.File
 import org.marshalov.telekot.client.model.InlineKeyboardMarkup
 import org.marshalov.telekot.client.model.Message
@@ -40,7 +41,7 @@ interface CommonBotApiClient {
         parseMode: String? = null,
         disableWebPagePreview: Boolean? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -56,7 +57,7 @@ interface CommonBotApiClient {
     suspend fun forwardMessage(
         chatId: String,
         fromChatId: String,
-        messageId: Int,
+        messageId: Long,
         disableNotification: Boolean? = null
     ): Message
 
@@ -79,7 +80,7 @@ interface CommonBotApiClient {
         // @TODO: enum
         parseMode: String? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -115,7 +116,7 @@ interface CommonBotApiClient {
         // @TODO: Add binary file for uploading by multipart/form-data
         thumb: String? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -143,7 +144,7 @@ interface CommonBotApiClient {
         parseMode: String? = null,
         // @TODO: Add binary file for uploading by multipart/form-data
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -179,7 +180,7 @@ interface CommonBotApiClient {
         parseMode: String? = null,
         supportsStreaming: Boolean? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -213,7 +214,7 @@ interface CommonBotApiClient {
         // @TODO: enum
         parseMode: String? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -241,7 +242,7 @@ interface CommonBotApiClient {
         parseMode: String? = null,
         duration: Int? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -267,7 +268,7 @@ interface CommonBotApiClient {
         // @TODO: Add binary file for uploading by multipart/form-data
         thumb: String? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -283,7 +284,7 @@ interface CommonBotApiClient {
         chatId: String,
         media: List<InputMediaPhotoOrVideo>,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null
+        replyToMessageId: Long? = null
     ): List<Message>
 
     /**
@@ -303,7 +304,7 @@ interface CommonBotApiClient {
         longitude: Float,
         livePeriod: Int? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -322,7 +323,7 @@ interface CommonBotApiClient {
         latitude: Float,
         longitude: Float,
         chatId: String? = null,
-        messageId: Int? = null,
+        messageId: Long? = null,
         inlineMessageId: String? = null,
         replyMarkup: InlineKeyboardMarkup? = null
     ): Message
@@ -337,8 +338,8 @@ interface CommonBotApiClient {
      * @return the sent Message
      */
     suspend fun stopMessageLiveLocation(
-        chatId: Int? = null,
-        messageId: Int? = null,
+        chatId: Long? = null,
+        messageId: Long? = null,
         inlineMessageId: String? = null,
         replyMarkup: InlineKeyboardMarkup? = null
     ): Message
@@ -366,7 +367,7 @@ interface CommonBotApiClient {
         foursquareId: String? = null,
         foursquareType: String? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -389,7 +390,7 @@ interface CommonBotApiClient {
         lastName: String? = null,
         vcard: String? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -419,14 +420,14 @@ interface CommonBotApiClient {
         isAnonymous: Boolean? = null,
         type: String? = null,
         allowsMultipleAnswers: Boolean? = null,
-        correctOptionId: Int? = null,
+        correctOptionId: Long? = null,
         explanation: String? = null,
         explanationParseMode: String? = null,
         openPeriod: Int? = null,
         closeDate: Int? = null,
         isClosed: Boolean? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -446,7 +447,7 @@ interface CommonBotApiClient {
         chatId: String,
         emoji: String? = null,
         disableNotification: Boolean? = null,
-        replyToMessageId: Int? = null,
+        replyToMessageId: Long? = null,
         replyMarkup: ReplyMarkup? = null
     ): Message
 
@@ -481,7 +482,7 @@ interface CommonBotApiClient {
      * @return a UserProfilePhotos object
      */
     suspend fun getUserProfilePhotos(
-        userId: Int,
+        userId: Long,
         offset: Int? = null,
         limit: Int? = null
     ): UserProfilePhotos
@@ -513,8 +514,97 @@ interface CommonBotApiClient {
      */
     suspend fun kickChatMember(
         chatId: String,
-        userId: Int,
+        userId: Long,
         untilDate: Int? = null
+    ): Boolean
+
+    /**
+     * Use this method to unban a previously kicked user in a supergroup or channel.
+     * (https://core.telegram.org/bots/api#unbanchatmember)
+     * The user will not return to the group or channel automatically, but will be able to join via link, etc.
+     * The bot must be an administrator for this to work.
+     * @param chatId Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
+     * @param userId Unique identifier of the target user
+     * @return True on success
+     */
+    suspend fun unbanChatMember(
+        chatId: String,
+        userId: Long
+    ): Boolean
+
+    /**
+     * Use this method to restrict a user in a supergroup.
+     * (https://core.telegram.org/bots/api#restrictchatmember)
+     * The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights.
+     * Pass True for all permissions to lift restrictions from a user.
+     * @param chatId Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
+     * @param userId Unique identifier of the target user
+     * @param permissions New user permissions
+     * @param untilDate Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever
+     * @return True on success.
+     */
+    suspend fun restrictChatMember(
+        chatId: String,
+        userId: Long,
+        permissions: ChatPermissions,
+        untilDate: Int? = null
+    ): Boolean
+
+    /**
+     * Use this method to promote or demote a user in a supergroup or a channel.
+     * (https://core.telegram.org/bots/api#promotechatmember)
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     * Pass False for all boolean parameters to demote a user.
+     * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param userId Unique identifier of the target user
+     * @param canChangeInfo Pass True, if the administrator can change chat title, photo and other settings
+     * @param canPostMessages Pass True, if the administrator can create channel posts, channels only
+     * @param canEditMessages Pass True, if the administrator can edit messages of other users and can pin messages, channels only
+     * @param canDeleteMessages Pass True, if the administrator can delete messages of other users
+     * @param canInviteUsers Pass True, if the administrator can invite new users to the chat
+     * @param canRestrictMembers Pass True, if the administrator can restrict, ban or unban chat members
+     * @param canPinMessages Pass True, if the administrator can pin messages, supergroups only
+     * @param canPromoteMembers Pass True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed by him)
+     * @return True on success.
+     */
+    suspend fun promoteChatMember(
+        chatId: String,
+        userId: Long,
+        canChangeInfo: Boolean? = null,
+        canPostMessages: Boolean? = null,
+        canEditMessages: Boolean? = null,
+        canDeleteMessages: Boolean? = null,
+        canInviteUsers: Boolean? = null,
+        canRestrictMembers: Boolean? = null,
+        canPinMessages: Boolean? = null,
+        canPromoteMembers: Boolean? = null
+    ): Boolean
+
+    /**
+     * Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
+     * (https://core.telegram.org/bots/api#setchatadministratorcustomtitle)
+     * @param chatId Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     * @param userId Unique identifier of the target user
+     * @param customTitle New custom title for the administrator; 0-16 characters, emoji are not allowed
+     * @return True on success.
+     */
+    suspend fun setChatAdministratorCustomTitle(
+        chatId: String,
+        userId: Long,
+        customTitle: String
+    ): Boolean
+
+    /**
+     * Use this method to set default chat permissions for all members. T
+     * he bot must be an administrator in the group or a supergroup for this to work
+     * and must have the can_restrict_members admin rights.
+     * @param chatId Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     * @param permissions New default chat permissions
+     * @return True on success.
+     */
+    suspend fun setChatPermissions(
+        chatId: String,
+        permissions: ChatPermissions
     ): Boolean
 
     /**

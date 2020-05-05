@@ -49,11 +49,14 @@ This validates that our coverage levels are maintained.
 Links are in the README.
 
 ### Linting
-We are also [detekt](https://arturbosch.github.io/detekt/) for code style checking and linting.
+We are also [ktlint](https://ktlint.github.io/) and [detekt](https://arturbosch.github.io/detekt/) for code style checking and linting.
 
 **Note**:
 These will be run as part of the `validate` phase of a full build but if you want to run them manually you will have to navigate to each module directory and run the command
 
+```shell script
+gradle ktlintCheck
+```
 ```shell script
 gradle detekt
 ```

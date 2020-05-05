@@ -5,6 +5,7 @@ import org.marshalov.telekot.client.api.ApiClientWrapper
 import org.marshalov.telekot.client.api.CommonBotApiClient
 import org.marshalov.telekot.client.model.BotCommand
 import org.marshalov.telekot.client.model.Chat
+import org.marshalov.telekot.client.model.ChatPermissions
 import org.marshalov.telekot.client.model.File
 import org.marshalov.telekot.client.model.InlineKeyboardMarkup
 import org.marshalov.telekot.client.model.Message
@@ -35,7 +36,7 @@ class CommonBotApiClientImpl(
         parseMode: String?,
         disableWebPagePreview: Boolean?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -53,7 +54,7 @@ class CommonBotApiClientImpl(
     override suspend fun forwardMessage(
         chatId: String,
         fromChatId: String,
-        messageId: Int,
+        messageId: Long,
         disableNotification: Boolean?
     ): Message =
         api.getMethodResult(
@@ -71,7 +72,7 @@ class CommonBotApiClientImpl(
         caption: String?,
         parseMode: String?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -95,7 +96,7 @@ class CommonBotApiClientImpl(
         title: String?,
         thumb: String?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -121,7 +122,7 @@ class CommonBotApiClientImpl(
         caption: String?,
         parseMode: String?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -148,7 +149,7 @@ class CommonBotApiClientImpl(
         parseMode: String?,
         supportsStreaming: Boolean?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -178,7 +179,7 @@ class CommonBotApiClientImpl(
         caption: String?,
         parseMode: String?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -204,7 +205,7 @@ class CommonBotApiClientImpl(
         parseMode: String?,
         duration: Int?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -227,7 +228,7 @@ class CommonBotApiClientImpl(
         length: Int?,
         thumb: String?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -247,7 +248,7 @@ class CommonBotApiClientImpl(
         chatId: String,
         media: List<InputMediaPhotoOrVideo>,
         disableNotification: Boolean?,
-        replyToMessageId: Int?
+        replyToMessageId: Long?
     ): List<Message> =
         api.getMethodResult(
             ::sendMediaGroup, mapOf(
@@ -264,7 +265,7 @@ class CommonBotApiClientImpl(
         longitude: Float,
         livePeriod: Int?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -283,7 +284,7 @@ class CommonBotApiClientImpl(
         latitude: Float,
         longitude: Float,
         chatId: String?,
-        messageId: Int?,
+        messageId: Long?,
         inlineMessageId: String?,
         replyMarkup: InlineKeyboardMarkup?
     ): Message =
@@ -299,8 +300,8 @@ class CommonBotApiClientImpl(
         )
 
     override suspend fun stopMessageLiveLocation(
-        chatId: Int?,
-        messageId: Int?,
+        chatId: Long?,
+        messageId: Long?,
         inlineMessageId: String?,
         replyMarkup: InlineKeyboardMarkup?
     ): Message =
@@ -322,7 +323,7 @@ class CommonBotApiClientImpl(
         foursquareId: String?,
         foursquareType: String?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -347,7 +348,7 @@ class CommonBotApiClientImpl(
         lastName: String?,
         vcard: String?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -370,14 +371,14 @@ class CommonBotApiClientImpl(
         isAnonymous: Boolean?,
         type: String?,
         allowsMultipleAnswers: Boolean?,
-        correctOptionId: Int?,
+        correctOptionId: Long?,
         explanation: String?,
         explanationParseMode: String?,
         openPeriod: Int?,
         closeDate: Int?,
         isClosed: Boolean?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -404,7 +405,7 @@ class CommonBotApiClientImpl(
         chatId: String,
         emoji: String?,
         disableNotification: Boolean?,
-        replyToMessageId: Int?,
+        replyToMessageId: Long?,
         replyMarkup: ReplyMarkup?
     ): Message =
         api.getMethodResult(
@@ -429,7 +430,7 @@ class CommonBotApiClientImpl(
         )
 
     override suspend fun getUserProfilePhotos(
-        userId: Int,
+        userId: Long,
         offset: Int?,
         limit: Int?
     ): UserProfilePhotos =
@@ -452,7 +453,7 @@ class CommonBotApiClientImpl(
 
     override suspend fun kickChatMember(
         chatId: String,
-        userId: Int,
+        userId: Long,
         untilDate: Int?
     ): Boolean =
         api.getMethodResult(
@@ -460,6 +461,83 @@ class CommonBotApiClientImpl(
                 "chat_id" to chatId,
                 "user_id" to userId,
                 "until_date" to untilDate
+            )
+        )
+
+    override suspend fun unbanChatMember(
+        chatId: String,
+        userId: Long
+    ): Boolean =
+        api.getMethodResult(
+            ::unbanChatMember, mapOf(
+                "chat_id" to chatId,
+                "user_id" to userId
+            )
+        )
+
+    override suspend fun restrictChatMember(
+        chatId: String,
+        userId: Long,
+        permissions: ChatPermissions,
+        untilDate: Int?
+    ): Boolean =
+        api.getMethodResult(
+            ::restrictChatMember, mapOf(
+                "chat_id" to chatId,
+                "user_id" to userId,
+                "permissions" to permissions,
+                "until_date" to untilDate
+            )
+        )
+
+    override suspend fun promoteChatMember(
+        chatId: String,
+        userId: Long,
+        canChangeInfo: Boolean?,
+        canPostMessages: Boolean?,
+        canEditMessages: Boolean?,
+        canDeleteMessages: Boolean?,
+        canInviteUsers: Boolean?,
+        canRestrictMembers: Boolean?,
+        canPinMessages: Boolean?,
+        canPromoteMembers: Boolean?
+    ): Boolean =
+        api.getMethodResult(
+            ::promoteChatMember, mapOf(
+                "chat_id" to chatId,
+                "user_id" to userId,
+                "can_change_info" to canChangeInfo,
+                "can_post_messages" to canPostMessages,
+                "can_edit_messages" to canEditMessages,
+                "can_delete_messages" to canDeleteMessages,
+                "can_invite_users" to canInviteUsers,
+                "can_restrict_members" to canRestrictMembers,
+                "can_pin_messages" to canPinMessages,
+                "can_promote_members" to canPromoteMembers
+            )
+        )
+
+    override suspend fun setChatAdministratorCustomTitle(
+        chatId: String,
+        userId: Long,
+        customTitle: String
+    ): Boolean =
+        api.getMethodResult(
+            ::setChatAdministratorCustomTitle, mapOf(
+                "chat_id" to chatId,
+                "user_id" to userId,
+                "custom_title" to customTitle
+            )
+        )
+
+    override suspend fun setChatPermissions(
+        chatId: String,
+        permissions: ChatPermissions
+    ): Boolean =
+        api.getMethodResult(
+            ::setChatPermissions, mapOf(
+                "chat_id" to chatId,
+                "permissions" to permissions
             )
         )
 

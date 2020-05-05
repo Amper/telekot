@@ -120,7 +120,7 @@ naming:
     minimumFunctionNameLength: 3
   FunctionMaxLength:
     active: true
-    maximumFunctionNameLength: 30
+    maximumFunctionNameLength: 35
   FunctionNaming:
     active: true
   FunctionParameterNaming:
