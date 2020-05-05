@@ -346,6 +346,33 @@ interface CommonBotApiClient {
     ): Message
 
     /**
+     * Use this method to send information about a venue (https://core.telegram.org/bots/api#sendvenue).
+     * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param latitude Latitude of the venue
+     * @param longitude Longitude of the venue
+     * @param title Name of the venue
+     * @param address Address of the venue
+     * @param foursquareId Foursquare identifier of the venue
+     * @param foursquareType Foursquare type of the venue, if known. (For example, “artsEntertainment/default”, “artsEntertainment/aquarium” or “food/icecream”.)
+     * @param disableNotification Sends the message silently. Users will receive a notification with no sound.
+     * @param replyToMessageId If the message is a reply, ID of the original message
+     * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+     * @return send Message
+     */
+    suspend fun sendVenue(
+        chatId: String,
+        latitude: Float,
+        longitude: Float,
+        title: String,
+        address: String,
+        foursquareId: String? = null,
+        foursquareType: String? = null,
+        disableNotification: Boolean? = null,
+        replyToMessageId: Int? = null,
+        replyMarkup: ReplyMarkup? = null
+    ): Message
+
+    /**
      * Use this method when you need to tell the user that something is happening on the bot's side.
      * The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
      * We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.

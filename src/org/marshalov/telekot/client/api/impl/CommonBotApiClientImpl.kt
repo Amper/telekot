@@ -312,6 +312,33 @@ class CommonBotApiClientImpl(
             )
         )
 
+    override suspend fun sendVenue(
+        chatId: String,
+        latitude: Float,
+        longitude: Float,
+        title: String,
+        address: String,
+        foursquareId: String?,
+        foursquareType: String?,
+        disableNotification: Boolean?,
+        replyToMessageId: Int?,
+        replyMarkup: ReplyMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::sendVenue, mapOf(
+                "chat_id" to chatId,
+                "latitude" to latitude,
+                "longitude" to longitude,
+                "title" to title,
+                "address" to address,
+                "foursquare_id" to foursquareId,
+                "foursquare_type" to foursquareType,
+                "disable_notification" to disableNotification,
+                "reply_to_message_id" to replyToMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
     override suspend fun sendChatAction(chatId: String, action: String): Boolean =
         api.getMethodResult(::sendChatAction, mapOf("chat_id" to chatId, "action" to action))
 
