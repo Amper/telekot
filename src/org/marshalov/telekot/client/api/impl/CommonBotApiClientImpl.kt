@@ -541,6 +541,88 @@ class CommonBotApiClientImpl(
             )
         )
 
+    override suspend fun exportChatInviteLink(
+        chatId: String
+    ): String =
+        api.getMethodResult(
+            ::exportChatInviteLink, mapOf(
+                "chat_id" to chatId
+            )
+        )
+
+    override suspend fun setChatPhoto(
+        chatId: String,
+        photo: String
+    ): Boolean =
+        api.getMethodResult(
+            ::setChatPhoto, mapOf(
+                "chat_id" to chatId,
+                "photo" to photo
+            )
+        )
+
+    override suspend fun deleteChatPhoto(
+        chatId: String
+    ): Boolean =
+        api.getMethodResult(
+            ::deleteChatPhoto, mapOf(
+                "chat_id" to chatId
+            )
+        )
+
+    override suspend fun setChatTitle(
+        chatId: String,
+        title: String
+    ): Boolean =
+        api.getMethodResult(
+            ::setChatTitle, mapOf(
+                "chat_id" to chatId,
+                "title" to title
+            )
+        )
+
+    override suspend fun setChatDescription(
+        chatId: String,
+        description: String
+    ): Boolean =
+        api.getMethodResult(
+            ::setChatDescription, mapOf(
+                "chat_id" to chatId,
+                "description" to description
+            )
+        )
+
+    override suspend fun pinChatMessage(
+        chatId: String,
+        messageId: Long,
+        disableNotification: Boolean?
+    ): Boolean =
+        api.getMethodResult(
+            ::pinChatMessage, mapOf(
+                "chat_id" to chatId,
+                "message_id" to messageId,
+                "disable_notification" to disableNotification
+            )
+        )
+
+    override suspend fun unpinChatMessage(
+        chatId: String
+    ): Boolean =
+        api.getMethodResult(
+            ::unpinChatMessage, mapOf(
+                "chat_id" to chatId
+            )
+        )
+
+    override suspend fun leaveChat(
+        chatId: String
+    ): Boolean =
+        api.getMethodResult(
+            ::leaveChat, mapOf(
+                "chat_id" to chatId
+            )
+        )
+
     override suspend fun getChat(
         chatId: String
     ): Chat =
