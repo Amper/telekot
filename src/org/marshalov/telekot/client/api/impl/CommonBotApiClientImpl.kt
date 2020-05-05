@@ -339,6 +339,29 @@ class CommonBotApiClientImpl(
             )
         )
 
+    override suspend fun sendContact(
+        chatId: String,
+        phoneNumber: String,
+        firstName: String,
+        lastName: String?,
+        vcard: String?,
+        disableNotification: Boolean?,
+        replyToMessageId: Int?,
+        replyMarkup: ReplyMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::sendContact, mapOf(
+                "chat_id" to chatId,
+                "phone_number" to phoneNumber,
+                "first_name" to firstName,
+                "last_name" to lastName,
+                "vcard" to vcard,
+                "disable_notification" to disableNotification,
+                "reply_to_message_id" to replyToMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
     override suspend fun sendChatAction(chatId: String, action: String): Boolean =
         api.getMethodResult(::sendChatAction, mapOf("chat_id" to chatId, "action" to action))
 
