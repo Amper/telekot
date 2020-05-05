@@ -8,6 +8,7 @@ import org.marshalov.telekot.client.model.Chat
 import org.marshalov.telekot.client.model.File
 import org.marshalov.telekot.client.model.Message
 import org.marshalov.telekot.client.model.User
+import org.marshalov.telekot.client.model.markers.InputMediaPhotoOrVideo
 import org.marshalov.telekot.client.model.markers.ReplyMarkup
 
 /**
@@ -16,6 +17,7 @@ import org.marshalov.telekot.client.model.markers.ReplyMarkup
  * @param apiUrl Root URL of Telegram API (https://api.telegram.org)
  * @param client KTOR HTTP Client instance
  */
+@Suppress("StringLiteralDuplication", "TooManyFunctions")
 class CommonBotApiClientImpl(
     apiToken: String,
     apiUrl: String? = null,
@@ -127,6 +129,148 @@ class CommonBotApiClientImpl(
                 "thumb" to thumb,
                 "caption" to caption,
                 "parse_mode" to parseMode,
+                "disable_notification" to disableNotification,
+                "reply_to_message_id" to replyToMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
+    override suspend fun sendVideo(
+        chatId: String,
+        video: String,
+        duration: Int?,
+        width: Int?,
+        height: Int?,
+        thumb: String?,
+        caption: String?,
+        parseMode: String?,
+        supportsStreaming: Boolean?,
+        disableNotification: Boolean?,
+        replyToMessageId: Int?,
+        replyMarkup: ReplyMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::sendVideo, mapOf(
+                "chat_id" to chatId,
+                "video" to video,
+                "duration" to duration,
+                "width" to width,
+                "height" to height,
+                "thumb" to thumb,
+                "caption" to caption,
+                "parse_mode" to parseMode,
+                "supports_streaming" to supportsStreaming,
+                "disable_notification" to disableNotification,
+                "reply_to_message_id" to replyToMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
+    override suspend fun sendAnimation(
+        chatId: String,
+        animation: String,
+        duration: Int?,
+        width: Int?,
+        height: Int?,
+        thumb: String?,
+        caption: String?,
+        parseMode: String?,
+        disableNotification: Boolean?,
+        replyToMessageId: Int?,
+        replyMarkup: ReplyMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::sendAnimation, mapOf(
+                "chat_id" to chatId,
+                "animation" to animation,
+                "duration" to duration,
+                "width" to width,
+                "height" to height,
+                "thumb" to thumb,
+                "caption" to caption,
+                "parse_mode" to parseMode,
+                "disable_notification" to disableNotification,
+                "reply_to_message_id" to replyToMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
+    override suspend fun sendVoice(
+        chatId: String,
+        voice: String,
+        caption: String?,
+        parseMode: String?,
+        duration: Int?,
+        disableNotification: Boolean?,
+        replyToMessageId: Int?,
+        replyMarkup: ReplyMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::sendVoice, mapOf(
+                "chat_id" to chatId,
+                "voice" to voice,
+                "caption" to caption,
+                "parse_mode" to parseMode,
+                "duration" to duration,
+                "disable_notification" to disableNotification,
+                "reply_to_message_id" to replyToMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
+    override suspend fun sendVideoNote(
+        chatId: String,
+        videoNote: String,
+        duration: Int?,
+        length: Int?,
+        thumb: String?,
+        disableNotification: Boolean?,
+        replyToMessageId: Int?,
+        replyMarkup: ReplyMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::sendVideoNote, mapOf(
+                "chat_id" to chatId,
+                "video_note" to videoNote,
+                "duration" to duration,
+                "length" to length,
+                "thumb" to thumb,
+                "disable_notification" to disableNotification,
+                "reply_to_message_id" to replyToMessageId,
+                "reply_markup" to replyMarkup
+            )
+        )
+
+    override suspend fun sendMediaGroup(
+        chatId: String,
+        media: List<InputMediaPhotoOrVideo>,
+        disableNotification: Boolean?,
+        replyToMessageId: Int?
+    ): List<Message> =
+        api.getMethodResult(
+            ::sendMediaGroup, mapOf(
+                "chat_id" to chatId,
+                "media" to media,
+                "disable_notification" to disableNotification,
+                "reply_to_message_id" to replyToMessageId
+            )
+        )
+
+    override suspend fun sendLocation(
+        chatId: String,
+        latitude: Float,
+        longitude: Float,
+        livePeriod: Int?,
+        disableNotification: Boolean?,
+        replyToMessageId: Int?,
+        replyMarkup: ReplyMarkup?
+    ): Message =
+        api.getMethodResult(
+            ::sendLocation, mapOf(
+                "chat_id" to chatId,
+                "latitude" to latitude,
+                "longitude" to longitude,
+                "live_period" to livePeriod,
                 "disable_notification" to disableNotification,
                 "reply_to_message_id" to replyToMessageId,
                 "reply_markup" to replyMarkup

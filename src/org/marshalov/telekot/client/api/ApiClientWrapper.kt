@@ -15,6 +15,8 @@ import org.marshalov.telekot.client.model.Response
  * @param apiToken Unique authentification token (https://core.telegram.org/bots/api#authorizing-your-bot)
  * @param apiUrl Root URL of Telegram API (https://api.telegram.org)
  * @param client KTOR HTTP Client instance
+ * @property client HTTP-client for api calling.
+ * @property DEFAULT_API_URL Default URL of Telegram API Server.
  */
 class ApiClientWrapper(
     private val apiToken: String,
@@ -55,13 +57,27 @@ class ApiClientWrapper(
         responseClass: KClass<R>
     ): T =
         getResponseResult(
-            method = methodName,
+            methodName = methodName,
             response = getResponse(methodName, parameters, resultClass, responseClass)
         )
 
+    /**
+     * Get method Telegram API url by method name
+     * @param method Telegram API method name
+     * @return Telegram API method URL
+     */
     fun getMethodUrl(method: String) =
         "$apiUrl/bot$apiToken/$method"
 
+    /**
+     * Get Common Telegram API response by method name and parameters.
+     * @param methodName Name of method in Telegram API
+     * @param parameters Map of parameters for method calling
+     * @param resultClass Kotlin class of expected result (wrapped in response)
+     * @param responseClass Kotlin class of response
+     * @return Telegram API Response
+     * @see org.marshalov.telekot.client.model.Response
+     */
     suspend inline fun <reified T : Any, reified R : Response<T>> getResponse(
         methodName: String,
         parameters: Map<String, Any?> = emptyMap(),
@@ -73,14 +89,20 @@ class ApiClientWrapper(
             body = parameters
         }
 
+    /**
+     * Get wrapped result object by common Telegram API Response.
+     * @param methodName Name of method in Telegram API
+     * @param response Any common Telegram API response, wrapping result object
+     * @return Result object from response
+     */
     fun <T : Any, R : Response<T>> getResponseResult(
-        method: String,
+        methodName: String,
         response: R
     ): T =
         when {
             !response.ok ->
                 throw TelegramApiError(
-                    method,
+                    methodName,
                     response.errorCode,
                     response.description
                 )

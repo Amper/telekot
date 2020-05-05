@@ -5,6 +5,9 @@ import org.marshalov.telekot.client.api.UpdatesBotApiClient
 import org.marshalov.telekot.client.api.impl.UpdatesBotApiClientImpl
 import org.marshalov.telekot.client.factories.ApiClientFactory
 
+/**
+ * Factory for creating of Getting Updates Telegram Bot API Client.
+ */
 object UpdatesBotApiClientFactory :
     ApiClientFactory<UpdatesBotApiClient> {
     override fun createApiClient(

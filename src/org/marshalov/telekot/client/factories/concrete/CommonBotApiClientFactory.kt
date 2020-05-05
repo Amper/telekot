@@ -5,9 +5,11 @@ import org.marshalov.telekot.client.api.CommonBotApiClient
 import org.marshalov.telekot.client.api.impl.CommonBotApiClientImpl
 import org.marshalov.telekot.client.factories.ApiClientFactory
 
+/**
+ * Factory for creating of Common Telegram Bot API Client.
+ */
 object CommonBotApiClientFactory :
     ApiClientFactory<CommonBotApiClient> {
-
     override fun createApiClient(
         apiToken: String,
         apiUrl: String?,

@@ -5,6 +5,9 @@ import org.marshalov.telekot.client.api.InlineBotApiClient
 import org.marshalov.telekot.client.api.impl.InlineBotApiClientImpl
 import org.marshalov.telekot.client.factories.ApiClientFactory
 
+/**
+ * Factory for creating of Inline Mode Telegram Bot API Client.
+ */
 object InlineBotApiClientFactory :
     ApiClientFactory<InlineBotApiClient> {
     override fun createApiClient(

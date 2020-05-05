@@ -5,11 +5,13 @@ import org.marshalov.telekot.client.model.Chat
 import org.marshalov.telekot.client.model.File
 import org.marshalov.telekot.client.model.Message
 import org.marshalov.telekot.client.model.User
+import org.marshalov.telekot.client.model.markers.InputMediaPhotoOrVideo
 import org.marshalov.telekot.client.model.markers.ReplyMarkup
 
 /**
  * Interface for Common Telegram Bot API (https://core.telegram.org/bots/api#available-methods).
  */
+@Suppress("ComplexInterface", "TooManyFunctions")
 interface CommonBotApiClient {
     /**
      * A simple method for testing your bot's auth token. Requires no parameters.
@@ -139,6 +141,168 @@ interface CommonBotApiClient {
         // @TODO: enum
         parseMode: String? = null,
         // @TODO: Add binary file for uploading by multipart/form-data
+        disableNotification: Boolean? = null,
+        replyToMessageId: Int? = null,
+        replyMarkup: ReplyMarkup? = null
+    ): Message
+
+    /**
+     * Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document).
+     * (https://core.telegram.org/bots/api#sendvideo)
+     * Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
+     * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param video Video to send. Pass a fileId as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More info on Sending Files »
+     * @param duration Duration of sent video in seconds
+     * @param width Video width
+     * @param height Video height
+     * @param thumb Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail‘s width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can’t be reused and can be only uploaded as a new file, so you can pass “attach://<fileAttachName>” if the thumbnail was uploaded using multipart/form-data under <fileAttachName>. More info on Sending Files »
+     * @param caption Video caption (may also be used when resending videos by fileId), 0-1024 characters after entities parsing
+     * @param parseMode Mode for parsing entities in the video caption. See formatting options for more details.
+     * @param supportsStreaming Pass True, if the uploaded video is suitable for streaming
+     * @param disableNotification Sends the message silently. Users will receive a notification with no sound.
+     * @param replyToMessageId If the message is a reply, ID of the original message
+     * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+     * @return sent Message
+     */
+    @Suppress("LongParameterList")
+    suspend fun sendVideo(
+        chatId: String,
+        // @TODO: Add binary file for uploading by multipart/form-data
+        video: String,
+        duration: Int? = null,
+        width: Int? = null,
+        height: Int? = null,
+        // @TODO: Add binary file for uploading by multipart/form-data
+        thumb: String? = null,
+        caption: String? = null,
+        // @TODO: enum
+        parseMode: String? = null,
+        supportsStreaming: Boolean? = null,
+        disableNotification: Boolean? = null,
+        replyToMessageId: Int? = null,
+        replyMarkup: ReplyMarkup? = null
+    ): Message
+
+    /**
+     * Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound).
+     * (https://core.telegram.org/bots/api#sendanimation)
+     * Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
+     * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param animation Animation to send. Pass a fileId as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More info on Sending Files »
+     * @param duration Duration of sent animation in seconds
+     * @param width Animation width
+     * @param height Animation height
+     * @param thumb Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail‘s width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can’t be reused and can be only uploaded as a new file, so you can pass “attach://<fileAttachName>” if the thumbnail was uploaded using multipart/form-data under <fileAttachName>. More info on Sending Files »
+     * @param caption Animation caption (may also be used when resending animation by fileId), 0-1024 characters after entities parsing
+     * @param parseMode Mode for parsing entities in the animation caption. See formatting options for more details.
+     * @param disableNotification Sends the message silently. Users will receive a notification with no sound.
+     * @param replyToMessageId If the message is a reply, ID of the original message
+     * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply
+     * @return sent Message
+     */
+    @Suppress("LongParameterList")
+    suspend fun sendAnimation(
+        chatId: String,
+        // @TODO: Add binary file for uploading by multipart/form-data
+        animation: String,
+        duration: Int? = null,
+        width: Int? = null,
+        height: Int? = null,
+        // @TODO: Add binary file for uploading by multipart/form-data
+        thumb: String? = null,
+        caption: String? = null,
+        // @TODO: enum
+        parseMode: String? = null,
+        disableNotification: Boolean? = null,
+        replyToMessageId: Int? = null,
+        replyMarkup: ReplyMarkup? = null
+    ): Message
+
+    /**
+     * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message.
+     * For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as Audio or Document).
+     * (https://core.telegram.org/bots/api#sendvoice)
+     * Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+     * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param voice Audio file to send. Pass a fileId as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
+     * @param caption Voice message caption, 0-1024 characters after entities parsing
+     * @param parseMode Mode for parsing entities in the voice message caption. See formatting options for more details.
+     * @param duration Duration of the voice message in seconds
+     * @param disableNotification Sends the message silently. Users will receive a notification with no sound.
+     * @param replyToMessageId If the message is a reply, ID of the original message
+     * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+     * @return sent Message
+     */
+    suspend fun sendVoice(
+        chatId: String,
+        // @TODO: Add binary file for uploading by multipart/form-data
+        voice: String,
+        caption: String? = null,
+        // @TODO: enum
+        parseMode: String? = null,
+        duration: Int? = null,
+        disableNotification: Boolean? = null,
+        replyToMessageId: Int? = null,
+        replyMarkup: ReplyMarkup? = null
+    ): Message
+
+    /**
+     * As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long.
+     * Use this method to send video messages (https://core.telegram.org/bots/api#sendvideonote).
+     * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param videoNote Video note to send. Pass a fileId as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More info on Sending Files ». Sending video notes by a URL is currently unsupported
+     * @param duration Duration of sent video in seconds
+     * @param length Video width and height, i.e. diameter of the video message
+     * @param thumb Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail‘s width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can’t be reused and can be only uploaded as a new file, so you can pass “attach://<fileAttachName>” if the thumbnail was uploaded using multipart/form-data under <fileAttachName>. More info on Sending Files »
+     * @param disableNotification Sends the message silently. Users will receive a notification with no sound.
+     * @param replyToMessageId If the message is a reply, ID of the original message
+     * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a re
+     * @return sent Message
+     */
+    suspend fun sendVideoNote(
+        chatId: String,
+        // @TODO: Add binary file for uploading by multipart/form-data
+        videoNote: String,
+        duration: Int? = null,
+        length: Int? = null,
+        // @TODO: Add binary file for uploading by multipart/form-data
+        thumb: String? = null,
+        disableNotification: Boolean? = null,
+        replyToMessageId: Int? = null,
+        replyMarkup: ReplyMarkup? = null
+    ): Message
+
+    /**
+     * Use this method to send a group of photos or videos as an album (https://core.telegram.org/bots/api#sendmediagroup).
+     * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param media A JSON-serialized array describing photos and videos to be sent, must include 2-10 items
+     * @param disableNotification Sends the messages silently. Users will receive a notification with no sound.
+     * @param replyToMessageId If the messages are a reply, ID of the original message
+     * @return a list of the sent Messages
+     */
+    suspend fun sendMediaGroup(
+        chatId: String,
+        media: List<InputMediaPhotoOrVideo>,
+        disableNotification: Boolean? = null,
+        replyToMessageId: Int? = null
+    ): List<Message>
+
+    /**
+     * Use this method to send point on the map (https://core.telegram.org/bots/api#sendlocation).
+     * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param latitude Latitude of the location
+     * @param longitude Longitude of the location
+     * @param livePeriod Period in seconds for which the location will be updated (see Live Locations, should be between 60 and 86400.
+     * @param disableNotification Sends the message silently. Users will receive a notification with no sound.
+     * @param replyToMessageId If the message is a reply, ID of the original message
+     * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+     * @return sent Message
+     */
+    suspend fun sendLocation(
+        chatId: String,
+        latitude: Float,
+        longitude: Float,
+        livePeriod: Int? = null,
         disableNotification: Boolean? = null,
         replyToMessageId: Int? = null,
         replyMarkup: ReplyMarkup? = null

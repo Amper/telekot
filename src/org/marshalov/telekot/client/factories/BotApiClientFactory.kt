@@ -10,6 +10,9 @@ import org.marshalov.telekot.client.factories.concrete.InlineBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.SimpleBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.UpdatesBotApiClientFactory
 
+/**
+ * Universal factory for creating of any Telegram Bot API Client.
+ */
 object BotApiClientFactory {
     inline fun <reified T> createApiClient(
         apiToken: String,
