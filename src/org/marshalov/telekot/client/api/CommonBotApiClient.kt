@@ -6,13 +6,14 @@ import org.marshalov.telekot.client.model.File
 import org.marshalov.telekot.client.model.InlineKeyboardMarkup
 import org.marshalov.telekot.client.model.Message
 import org.marshalov.telekot.client.model.User
+import org.marshalov.telekot.client.model.UserProfilePhotos
 import org.marshalov.telekot.client.model.markers.InputMediaPhotoOrVideo
 import org.marshalov.telekot.client.model.markers.ReplyMarkup
 
 /**
  * Interface for Common Telegram Bot API (https://core.telegram.org/bots/api#available-methods).
  */
-@Suppress("ComplexInterface", "TooManyFunctions")
+@Suppress("ComplexInterface", "TooManyFunctions", "LongParameterList")
 interface CommonBotApiClient {
     /**
      * A simple method for testing your bot's auth token. Requires no parameters.
@@ -101,7 +102,6 @@ interface CommonBotApiClient {
      * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return sent Message
      */
-    @Suppress("LongParameterList")
     suspend fun sendAudio(
         chatId: String,
         // @TODO: Add binary file for uploading by multipart/form-data
@@ -165,7 +165,6 @@ interface CommonBotApiClient {
      * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return sent Message
      */
-    @Suppress("LongParameterList")
     suspend fun sendVideo(
         chatId: String,
         // @TODO: Add binary file for uploading by multipart/form-data
@@ -201,7 +200,6 @@ interface CommonBotApiClient {
      * @param replyMarkup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply
      * @return sent Message
      */
-    @Suppress("LongParameterList")
     suspend fun sendAnimation(
         chatId: String,
         // @TODO: Add binary file for uploading by multipart/form-data
@@ -473,6 +471,19 @@ interface CommonBotApiClient {
         // @TODO: enum
         action: String
     ): Boolean
+
+    /**
+     * Use this method to get a list of profile pictures for a user.
+     * @param userId Unique identifier of the target user
+     * @param offset Sequential number of the first photo to be returned. By default, all photos are returned.
+     * @param limit Limits the number of photos to be retrieved. Values between 1-100 are accepted. Defaults to 100.
+     * @return a UserProfilePhotos object
+     */
+    suspend fun getUserProfilePhotos(
+        userId: Int,
+        offset: Int? = null,
+        limit: Int? = null
+    ): UserProfilePhotos
 
     /**
      * Use this method to get basic info about a file and prepare it for downloading.

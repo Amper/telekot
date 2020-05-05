@@ -9,6 +9,7 @@ import org.marshalov.telekot.client.model.File
 import org.marshalov.telekot.client.model.InlineKeyboardMarkup
 import org.marshalov.telekot.client.model.Message
 import org.marshalov.telekot.client.model.User
+import org.marshalov.telekot.client.model.UserProfilePhotos
 import org.marshalov.telekot.client.model.markers.InputMediaPhotoOrVideo
 import org.marshalov.telekot.client.model.markers.ReplyMarkup
 
@@ -416,16 +417,43 @@ class CommonBotApiClientImpl(
             )
         )
 
-    override suspend fun sendChatAction(chatId: String, action: String): Boolean =
-        api.getMethodResult(::sendChatAction, mapOf("chat_id" to chatId, "action" to action))
+    override suspend fun sendChatAction(
+        chatId: String,
+        action: String
+    ): Boolean =
+        api.getMethodResult(
+            ::sendChatAction, mapOf(
+                "chat_id" to chatId,
+                "action" to action
+            )
+        )
 
-    override suspend fun getFile(fileId: String): File =
+    override suspend fun getUserProfilePhotos(
+        userId: Int,
+        offset: Int?,
+        limit: Int?
+    ): UserProfilePhotos =
+        api.getMethodResult(
+            ::getUserProfilePhotos, mapOf(
+                "user_id" to userId,
+                "offset" to offset,
+                "limit" to limit
+            )
+        )
+
+    override suspend fun getFile(
+        fileId: String
+    ): File =
         api.getMethodResult(::getFile, mapOf("file_id" to fileId))
 
-    override suspend fun getChat(chatId: String): Chat =
+    override suspend fun getChat(
+        chatId: String
+    ): Chat =
         api.getMethodResult(::getChat, mapOf("chat_id" to chatId))
 
-    override suspend fun setMyCommands(commands: List<BotCommand>): Boolean =
+    override suspend fun setMyCommands(
+        commands: List<BotCommand>
+    ): Boolean =
         api.getMethodResult(::setMyCommands, mapOf("commands" to commands))
 
     override suspend fun getMyCommands(): List<BotCommand> =
