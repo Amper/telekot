@@ -21,7 +21,7 @@ import org.marshalov.telekot.client.model.markers.ReplyMarkup
  * @param apiUrl Root URL of Telegram API (https://api.telegram.org)
  * @param client KTOR HTTP Client instance
  */
-@Suppress("StringLiteralDuplication", "TooManyFunctions")
+@Suppress("StringLiteralDuplication", "TooManyFunctions", "LargeClass")
 class CommonBotApiClientImpl(
     apiToken: String,
     apiUrl: String? = null,

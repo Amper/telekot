@@ -69,7 +69,7 @@ class PaymentsBotApiClientImpl(
                 "is_flexible" to isFlexible,
                 "disable_notification" to disableNotification,
                 "reply_to_message_id" to replyToMessageId,
-                "reply_markup" to replyMarkup,
+                "reply_markup" to replyMarkup
             )
         )
 

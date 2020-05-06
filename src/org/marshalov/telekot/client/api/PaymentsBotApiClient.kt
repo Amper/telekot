@@ -8,6 +8,7 @@ import org.marshalov.telekot.client.model.payments.ShippingOption
 /**
  * Interface for Payments Telegram Bot API (https://core.telegram.org/bots/api#payments).
  */
+@Suppress("LongParameterList")
 interface PaymentsBotApiClient {
     /**
      * Use this method to send invoices (https://core.telegram.org/bots/api#sendinvoice).
