@@ -4,6 +4,7 @@ import io.ktor.client.HttpClient
 import kotlin.reflect.full.isSubclassOf
 import org.marshalov.telekot.client.BotApiClient
 import org.marshalov.telekot.client.api.CommonBotApiClient
+import org.marshalov.telekot.client.api.InlineBotApiClient
 import org.marshalov.telekot.client.api.PaymentsBotApiClient
 import org.marshalov.telekot.client.api.UpdatesBotApiClient
 import org.marshalov.telekot.client.factories.concrete.CommonBotApiClientFactory
@@ -25,13 +26,13 @@ object BotApiClientFactory {
         factoriesMapping.entries
             .firstOrNull { T::class.isSubclassOf(it.key) }
             ?.value
-            ?.createApiClient(apiToken, apiUrl, client) as T
+            ?.createApiClient(apiToken, apiUrl, client) as? T
             ?: throw IllegalArgumentException("...")
 
     val factoriesMapping = mapOf(
         BotApiClient::class to SimpleBotApiClientFactory,
         CommonBotApiClient::class to CommonBotApiClientFactory,
-        InlineBotApiClientFactory::class to InlineBotApiClientFactory,
+        InlineBotApiClient::class to InlineBotApiClientFactory,
         UpdatesBotApiClient::class to UpdatesBotApiClientFactory,
         PaymentsBotApiClient::class to PaymentsBotApiClientFactory
     )
