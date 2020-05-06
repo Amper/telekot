@@ -3,6 +3,7 @@ package org.marshalov.telekot.client.api.impl
 import io.ktor.client.HttpClient
 import org.marshalov.telekot.client.BotApiClient
 import org.marshalov.telekot.client.api.CommonBotApiClient
+import org.marshalov.telekot.client.api.GamesBotApiClient
 import org.marshalov.telekot.client.api.InlineBotApiClient
 import org.marshalov.telekot.client.api.PaymentsBotApiClient
 import org.marshalov.telekot.client.api.UpdatesBotApiClient
@@ -25,4 +26,5 @@ class BotApiClientImpl(
     override val updatesApi: UpdatesBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
     override val inlineApi: InlineBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
     override val paymentsApi: PaymentsBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
+    override val gamesApi: GamesBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
 }
