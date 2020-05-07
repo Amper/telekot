@@ -4,6 +4,7 @@ import io.ktor.client.HttpClient
 import org.marshalov.telekot.client.api.CommonBotApiClient
 import org.marshalov.telekot.client.api.GamesBotApiClient
 import org.marshalov.telekot.client.api.InlineBotApiClient
+import org.marshalov.telekot.client.api.MessageEditingBotApiClient
 import org.marshalov.telekot.client.api.PaymentsBotApiClient
 import org.marshalov.telekot.client.api.UpdatesBotApiClient
 import org.marshalov.telekot.client.factories.BotApiClientFactory
@@ -21,6 +22,11 @@ interface BotApiClient {
      * Interface for accessing Common Telegram API (https://core.telegram.org/bots/api#available-methods)
      */
     val commonApi: CommonBotApiClient
+
+    /**
+     * Interface for accessing Updating Messages Telegram API (https://core.telegram.org/bots/api#updating-messages)
+     */
+    val messageEditingApi: MessageEditingBotApiClient
 
     /**
      * Interface for accessing Getting Updates Telegram API (https://core.telegram.org/bots/api#getting-updates)

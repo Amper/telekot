@@ -5,6 +5,7 @@ import org.marshalov.telekot.client.BotApiClient
 import org.marshalov.telekot.client.api.CommonBotApiClient
 import org.marshalov.telekot.client.api.GamesBotApiClient
 import org.marshalov.telekot.client.api.InlineBotApiClient
+import org.marshalov.telekot.client.api.MessageEditingBotApiClient
 import org.marshalov.telekot.client.api.PaymentsBotApiClient
 import org.marshalov.telekot.client.api.UpdatesBotApiClient
 import org.marshalov.telekot.client.factories.BotApiClientFactory
@@ -23,6 +24,7 @@ class BotApiClientImpl(
 ) : BotApiClient {
     private val httpClient: HttpClient = client ?: HttpClientFactory.createHttpClient()
     override val commonApi: CommonBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
+    override val messageEditingApi: MessageEditingBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
     override val updatesApi: UpdatesBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
     override val inlineApi: InlineBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
     override val paymentsApi: PaymentsBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)

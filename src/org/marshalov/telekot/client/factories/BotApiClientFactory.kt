@@ -6,11 +6,13 @@ import org.marshalov.telekot.client.BotApiClient
 import org.marshalov.telekot.client.api.CommonBotApiClient
 import org.marshalov.telekot.client.api.GamesBotApiClient
 import org.marshalov.telekot.client.api.InlineBotApiClient
+import org.marshalov.telekot.client.api.MessageEditingBotApiClient
 import org.marshalov.telekot.client.api.PaymentsBotApiClient
 import org.marshalov.telekot.client.api.UpdatesBotApiClient
 import org.marshalov.telekot.client.factories.concrete.CommonBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.GamesBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.InlineBotApiClientFactory
+import org.marshalov.telekot.client.factories.concrete.MessageEditingBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.PaymentsBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.SimpleBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.UpdatesBotApiClientFactory
@@ -34,6 +36,7 @@ object BotApiClientFactory {
     val factoriesMapping = mapOf(
         BotApiClient::class to SimpleBotApiClientFactory,
         CommonBotApiClient::class to CommonBotApiClientFactory,
+        MessageEditingBotApiClient::class to MessageEditingBotApiClientFactory,
         InlineBotApiClient::class to InlineBotApiClientFactory,
         UpdatesBotApiClient::class to UpdatesBotApiClientFactory,
         PaymentsBotApiClient::class to PaymentsBotApiClientFactory,
