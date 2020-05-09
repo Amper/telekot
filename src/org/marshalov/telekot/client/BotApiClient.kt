@@ -1,14 +1,14 @@
 package org.marshalov.telekot.client
 
 import io.ktor.client.HttpClient
-import org.marshalov.telekot.client.api.CommonBotApiClient
-import org.marshalov.telekot.client.api.GamesBotApiClient
-import org.marshalov.telekot.client.api.InlineBotApiClient
-import org.marshalov.telekot.client.api.MessageEditingBotApiClient
-import org.marshalov.telekot.client.api.PaymentsBotApiClient
-import org.marshalov.telekot.client.api.StickersBotApiClient
-import org.marshalov.telekot.client.api.UpdatesBotApiClient
 import org.marshalov.telekot.client.factories.BotApiClientFactory
+import org.marshalov.telekot.telegram.api.CommonBotApiClient
+import org.marshalov.telekot.telegram.api.GamesBotApiClient
+import org.marshalov.telekot.telegram.api.InlineBotApiClient
+import org.marshalov.telekot.telegram.api.MessageEditingBotApiClient
+import org.marshalov.telekot.telegram.api.PaymentsBotApiClient
+import org.marshalov.telekot.telegram.api.StickersBotApiClient
+import org.marshalov.telekot.telegram.api.UpdatesBotApiClient
 
 /**
  * General interface for accessing all Telegram APIs.

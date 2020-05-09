@@ -3,13 +3,6 @@ package org.marshalov.telekot.client.factories
 import io.ktor.client.HttpClient
 import kotlin.reflect.full.isSubclassOf
 import org.marshalov.telekot.client.BotApiClient
-import org.marshalov.telekot.client.api.CommonBotApiClient
-import org.marshalov.telekot.client.api.GamesBotApiClient
-import org.marshalov.telekot.client.api.InlineBotApiClient
-import org.marshalov.telekot.client.api.MessageEditingBotApiClient
-import org.marshalov.telekot.client.api.PaymentsBotApiClient
-import org.marshalov.telekot.client.api.StickersBotApiClient
-import org.marshalov.telekot.client.api.UpdatesBotApiClient
 import org.marshalov.telekot.client.factories.concrete.CommonBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.GamesBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.InlineBotApiClientFactory
@@ -18,6 +11,13 @@ import org.marshalov.telekot.client.factories.concrete.PaymentsBotApiClientFacto
 import org.marshalov.telekot.client.factories.concrete.SimpleBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.StickersBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.UpdatesBotApiClientFactory
+import org.marshalov.telekot.telegram.api.CommonBotApiClient
+import org.marshalov.telekot.telegram.api.GamesBotApiClient
+import org.marshalov.telekot.telegram.api.InlineBotApiClient
+import org.marshalov.telekot.telegram.api.MessageEditingBotApiClient
+import org.marshalov.telekot.telegram.api.PaymentsBotApiClient
+import org.marshalov.telekot.telegram.api.StickersBotApiClient
+import org.marshalov.telekot.telegram.api.UpdatesBotApiClient
 
 /**
  * Universal factory for creating of any Telegram Bot API Client.

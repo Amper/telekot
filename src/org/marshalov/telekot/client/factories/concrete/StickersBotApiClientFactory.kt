@@ -1,9 +1,9 @@
 package org.marshalov.telekot.client.factories.concrete
 
 import io.ktor.client.HttpClient
-import org.marshalov.telekot.client.api.StickersBotApiClient
-import org.marshalov.telekot.client.api.impl.StickersBotApiClientImpl
 import org.marshalov.telekot.client.factories.ApiClientFactory
+import org.marshalov.telekot.client.impl.StickersBotApiClientImpl
+import org.marshalov.telekot.telegram.api.StickersBotApiClient
 
 /**
  * Factory for creating of Stickers Telegram Bot API Client.
