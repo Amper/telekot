@@ -7,6 +7,7 @@ import org.marshalov.telekot.client.api.GamesBotApiClient
 import org.marshalov.telekot.client.api.InlineBotApiClient
 import org.marshalov.telekot.client.api.MessageEditingBotApiClient
 import org.marshalov.telekot.client.api.PaymentsBotApiClient
+import org.marshalov.telekot.client.api.StickersBotApiClient
 import org.marshalov.telekot.client.api.UpdatesBotApiClient
 import org.marshalov.telekot.client.factories.BotApiClientFactory
 import org.marshalov.telekot.client.factories.HttpClientFactory
@@ -29,4 +30,5 @@ class BotApiClientImpl(
     override val inlineApi: InlineBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
     override val paymentsApi: PaymentsBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
     override val gamesApi: GamesBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
+    override val stickersApi: StickersBotApiClient = BotApiClientFactory.createApiClient(apiToken, apiUrl, httpClient)
 }

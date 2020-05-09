@@ -6,6 +6,7 @@ import org.marshalov.telekot.client.api.GamesBotApiClient
 import org.marshalov.telekot.client.api.InlineBotApiClient
 import org.marshalov.telekot.client.api.MessageEditingBotApiClient
 import org.marshalov.telekot.client.api.PaymentsBotApiClient
+import org.marshalov.telekot.client.api.StickersBotApiClient
 import org.marshalov.telekot.client.api.UpdatesBotApiClient
 import org.marshalov.telekot.client.factories.BotApiClientFactory
 
@@ -47,6 +48,11 @@ interface BotApiClient {
      * Interface for accessing Games Telegram API (https://core.telegram.org/bots/api#games)
      */
     val gamesApi: GamesBotApiClient
+
+    /**
+     * Interface for accessing Stickers Telegram API (https://core.telegram.org/bots/api#stickers)
+     */
+    val stickersApi: StickersBotApiClient
 
     companion object {
         /**
