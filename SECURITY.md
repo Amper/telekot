@@ -4,9 +4,9 @@
 
 The following versions of telekot are currently being supported with security updates:
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 0.0.1   | :white_check_mark: |
+| Version | Supported |
+| ------: | :-------: |
+|   0.0.1 |     ✅    |
 
 ## Reporting a Vulnerability
 
