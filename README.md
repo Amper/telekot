@@ -77,4 +77,4 @@ See more info in [SECURITY.md](SECURITY.md)
 
 ## ⚖️ License
 
-This library is licensed under the [Apache License, Version 2.0](LICENSE)
+This library is licensed under the [Apache License, Version 2.0](LICENSE.md)
