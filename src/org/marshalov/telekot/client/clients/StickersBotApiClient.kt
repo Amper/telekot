@@ -1,7 +1,7 @@
-package org.marshalov.telekot.client.impl
+package org.marshalov.telekot.client.clients
 
 import io.ktor.client.HttpClient
-import org.marshalov.telekot.telegram.api.StickersBotApiClient
+import org.marshalov.telekot.telegram.api.StickersBotApi
 import org.marshalov.telekot.telegram.model.File
 import org.marshalov.telekot.telegram.model.InlineKeyboardMarkup
 import org.marshalov.telekot.telegram.model.Message
@@ -14,11 +14,11 @@ import org.marshalov.telekot.telegram.model.stickers.StickerSet
  * @param apiUrl Root URL of Telegram API (https://api.telegram.org)
  * @param client KTOR HTTP Client instance
  */
-class StickersBotApiClientImpl(
+class StickersBotApiClient(
     apiToken: String,
     apiUrl: String? = null,
     client: HttpClient? = null
-) : StickersBotApiClient {
+) : StickersBotApi {
 
     override suspend fun sendSticker(
         chatId: String,

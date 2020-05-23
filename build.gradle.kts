@@ -39,7 +39,7 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
-    implementation("ch.qos.logback:logback-classic:$logbackVersion")
+    // KTOR Client
     implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
     implementation("io.ktor:ktor-client-apache:$ktorVersion")
@@ -47,7 +47,13 @@ dependencies {
     implementation("io.ktor:ktor-client-gson:$ktorVersion")
     implementation("io.ktor:ktor-client-logging-jvm:$ktorVersion")
     implementation("io.ktor:ktor-serialization:$ktorVersion")
+    // KTOR Server
+    implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    implementation("io.ktor:ktor-gson:$ktorVersion")
+    // Logging
+    implementation("ch.qos.logback:logback-classic:$logbackVersion")
     implementation("io.github.microutils:kotlin-logging:$loggingVersion")
+    // Testing
     testImplementation(kotlin("test", kotlinVersion))
     testImplementation(kotlin("test-junit5", kotlinVersion))
     testImplementation("io.ktor:ktor-client-mock:$ktorVersion")

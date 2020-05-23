@@ -8,7 +8,7 @@ import org.marshalov.telekot.telegram.model.Poll
 /**
  * Interface for Updating Messages Telegram Bot API (https://core.telegram.org/bots/api#updating-messages).
  */
-interface MessageEditingBotApiClient {
+interface MessageEditingBotApi : TelegramApi {
     /**
      * Use this method to edit text and game messages (https://core.telegram.org/bots/api#editmessagetext).
      * @param chatId Required if inlineMessageId is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)

@@ -1,7 +1,7 @@
-package org.marshalov.telekot.client.impl
+package org.marshalov.telekot.client.clients
 
 import io.ktor.client.HttpClient
-import org.marshalov.telekot.telegram.api.InlineBotApiClient
+import org.marshalov.telekot.telegram.api.InlineBotApi
 import org.marshalov.telekot.telegram.model.inline.InlineQueryResult
 
 /**
@@ -10,11 +10,11 @@ import org.marshalov.telekot.telegram.model.inline.InlineQueryResult
  * @param apiUrl Root URL of Telegram API (https://api.telegram.org)
  * @param client KTOR HTTP Client instance
  */
-class InlineBotApiClientImpl(
+class InlineBotApiClient(
     apiToken: String,
     apiUrl: String? = null,
     client: HttpClient? = null
-) : InlineBotApiClient {
+) : InlineBotApi {
 
     override suspend fun answerInlineQuery(
         inlineQueryId: String,

@@ -1,7 +1,7 @@
-package org.marshalov.telekot.client.impl
+package org.marshalov.telekot.client.clients
 
 import io.ktor.client.HttpClient
-import org.marshalov.telekot.telegram.api.UpdatesBotApiClient
+import org.marshalov.telekot.telegram.api.UpdatesBotApi
 import org.marshalov.telekot.telegram.model.updates.Update
 import org.marshalov.telekot.telegram.model.updates.WebhookInfo
 
@@ -11,11 +11,11 @@ import org.marshalov.telekot.telegram.model.updates.WebhookInfo
  * @param apiUrl Root URL of Telegram API (https://api.telegram.org)
  * @param client KTOR HTTP Client instance
  */
-class UpdatesBotApiClientImpl(
+class UpdatesBotApiClient(
     apiToken: String,
     apiUrl: String? = null,
     client: HttpClient? = null
-) : UpdatesBotApiClient {
+) : UpdatesBotApi {
 
     override suspend fun getUpdates(
         offset: Int?,

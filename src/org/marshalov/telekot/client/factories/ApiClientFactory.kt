@@ -1,11 +1,12 @@
 package org.marshalov.telekot.client.factories
 
 import io.ktor.client.HttpClient
+import org.marshalov.telekot.telegram.api.TelegramApi
 
 /**
  * Interface for factories of other Telegram API clients.
  */
-interface ApiClientFactory<T : Any> {
+interface ApiClientFactory<T : TelegramApi> {
     /**
      * Create Telegram API Client for generic interface.
      * @param apiToken Unique authentification token (https://core.telegram.org/bots/api#authorizing-your-bot)

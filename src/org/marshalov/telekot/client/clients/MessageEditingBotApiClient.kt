@@ -1,7 +1,7 @@
-package org.marshalov.telekot.client.impl
+package org.marshalov.telekot.client.clients
 
 import io.ktor.client.HttpClient
-import org.marshalov.telekot.telegram.api.MessageEditingBotApiClient
+import org.marshalov.telekot.telegram.api.MessageEditingBotApi
 import org.marshalov.telekot.telegram.model.InlineKeyboardMarkup
 import org.marshalov.telekot.telegram.model.InputMedia
 import org.marshalov.telekot.telegram.model.Message
@@ -13,11 +13,11 @@ import org.marshalov.telekot.telegram.model.Poll
  * @param apiUrl Root URL of Telegram API (https://api.telegram.org)
  * @param client KTOR HTTP Client instance
  */
-class MessageEditingBotApiClientImpl(
+class MessageEditingBotApiClient(
     apiToken: String,
     apiUrl: String? = null,
     client: HttpClient? = null
-) : MessageEditingBotApiClient {
+) : MessageEditingBotApi {
 
     override suspend fun editMessageText(
         text: String,

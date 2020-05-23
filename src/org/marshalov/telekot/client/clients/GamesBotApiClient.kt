@@ -1,7 +1,7 @@
-package org.marshalov.telekot.client.impl
+package org.marshalov.telekot.client.clients
 
 import io.ktor.client.HttpClient
-import org.marshalov.telekot.telegram.api.GamesBotApiClient
+import org.marshalov.telekot.telegram.api.GamesBotApi
 import org.marshalov.telekot.telegram.model.InlineKeyboardMarkup
 import org.marshalov.telekot.telegram.model.Message
 import org.marshalov.telekot.telegram.model.games.GameHighScore
@@ -12,11 +12,11 @@ import org.marshalov.telekot.telegram.model.games.GameHighScore
  * @param apiUrl Root URL of Telegram API (https://api.telegram.org)
  * @param client KTOR HTTP Client instance
  */
-class GamesBotApiClientImpl(
+class GamesBotApiClient(
     apiToken: String,
     apiUrl: String? = null,
     client: HttpClient? = null
-) : GamesBotApiClient {
+) : GamesBotApi {
 
     override suspend fun sendGame(
         chatId: Long,

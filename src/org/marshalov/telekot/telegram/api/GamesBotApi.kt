@@ -7,7 +7,7 @@ import org.marshalov.telekot.telegram.model.games.GameHighScore
 /**
  * Interface for Games Telegram Bot API (https://core.telegram.org/bots/api#games).
  */
-interface GamesBotApiClient {
+interface GamesBotApi : TelegramApi {
     /**
      * Use this method to send a game (https://core.telegram.org/bots/api#sendgames).
      * @param chatId Unique identifier for the target chat

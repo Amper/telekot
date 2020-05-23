@@ -16,7 +16,7 @@ import org.marshalov.telekot.telegram.model.markers.ReplyMarkup
  * Interface for Common Telegram Bot API (https://core.telegram.org/bots/api#available-methods).
  */
 @Suppress("ComplexInterface", "TooManyFunctions", "LongParameterList")
-interface CommonBotApiClient {
+interface CommonBotApi : TelegramApi {
     /**
      * A simple method for testing your bot's auth token. Requires no parameters.
      * @return basic information about the bot in form of a User object.

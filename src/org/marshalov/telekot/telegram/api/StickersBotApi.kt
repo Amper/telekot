@@ -9,7 +9,7 @@ import org.marshalov.telekot.telegram.model.stickers.StickerSet
 /**
  * Interface for Inline Telegram Bot API (https://core.telegram.org/bots/api#inline-mode).
  */
-interface StickersBotApiClient {
+interface StickersBotApi : TelegramApi {
     /**
      * Use this method to send static .WEBP or animated .TGS stickers (https://core.telegram.org/bots/api#sendsticker).
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)

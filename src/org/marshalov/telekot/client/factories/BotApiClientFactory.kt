@@ -11,13 +11,13 @@ import org.marshalov.telekot.client.factories.concrete.PaymentsBotApiClientFacto
 import org.marshalov.telekot.client.factories.concrete.SimpleBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.StickersBotApiClientFactory
 import org.marshalov.telekot.client.factories.concrete.UpdatesBotApiClientFactory
-import org.marshalov.telekot.telegram.api.CommonBotApiClient
-import org.marshalov.telekot.telegram.api.GamesBotApiClient
-import org.marshalov.telekot.telegram.api.InlineBotApiClient
-import org.marshalov.telekot.telegram.api.MessageEditingBotApiClient
-import org.marshalov.telekot.telegram.api.PaymentsBotApiClient
-import org.marshalov.telekot.telegram.api.StickersBotApiClient
-import org.marshalov.telekot.telegram.api.UpdatesBotApiClient
+import org.marshalov.telekot.telegram.api.CommonBotApi
+import org.marshalov.telekot.telegram.api.GamesBotApi
+import org.marshalov.telekot.telegram.api.InlineBotApi
+import org.marshalov.telekot.telegram.api.MessageEditingBotApi
+import org.marshalov.telekot.telegram.api.PaymentsBotApi
+import org.marshalov.telekot.telegram.api.StickersBotApi
+import org.marshalov.telekot.telegram.api.UpdatesBotApi
 
 /**
  * Universal factory for creating of any Telegram Bot API Client.
@@ -37,12 +37,12 @@ object BotApiClientFactory {
 
     val factoriesMapping = mapOf(
         BotApiClient::class to SimpleBotApiClientFactory,
-        CommonBotApiClient::class to CommonBotApiClientFactory,
-        MessageEditingBotApiClient::class to MessageEditingBotApiClientFactory,
-        InlineBotApiClient::class to InlineBotApiClientFactory,
-        UpdatesBotApiClient::class to UpdatesBotApiClientFactory,
-        PaymentsBotApiClient::class to PaymentsBotApiClientFactory,
-        StickersBotApiClient::class to StickersBotApiClientFactory,
-        GamesBotApiClient::class to GamesBotApiClientFactory
+        CommonBotApi::class to CommonBotApiClientFactory,
+        MessageEditingBotApi::class to MessageEditingBotApiClientFactory,
+        InlineBotApi::class to InlineBotApiClientFactory,
+        UpdatesBotApi::class to UpdatesBotApiClientFactory,
+        PaymentsBotApi::class to PaymentsBotApiClientFactory,
+        StickersBotApi::class to StickersBotApiClientFactory,
+        GamesBotApi::class to GamesBotApiClientFactory
     )
 }

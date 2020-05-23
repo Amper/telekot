@@ -2,13 +2,14 @@ package org.marshalov.telekot.client
 
 import io.ktor.client.HttpClient
 import org.marshalov.telekot.client.factories.BotApiClientFactory
-import org.marshalov.telekot.telegram.api.CommonBotApiClient
-import org.marshalov.telekot.telegram.api.GamesBotApiClient
-import org.marshalov.telekot.telegram.api.InlineBotApiClient
-import org.marshalov.telekot.telegram.api.MessageEditingBotApiClient
-import org.marshalov.telekot.telegram.api.PaymentsBotApiClient
-import org.marshalov.telekot.telegram.api.StickersBotApiClient
-import org.marshalov.telekot.telegram.api.UpdatesBotApiClient
+import org.marshalov.telekot.telegram.api.CommonBotApi
+import org.marshalov.telekot.telegram.api.GamesBotApi
+import org.marshalov.telekot.telegram.api.InlineBotApi
+import org.marshalov.telekot.telegram.api.MessageEditingBotApi
+import org.marshalov.telekot.telegram.api.PaymentsBotApi
+import org.marshalov.telekot.telegram.api.StickersBotApi
+import org.marshalov.telekot.telegram.api.TelegramApi
+import org.marshalov.telekot.telegram.api.UpdatesBotApi
 
 /**
  * General interface for accessing all Telegram APIs.
@@ -18,41 +19,41 @@ import org.marshalov.telekot.telegram.api.UpdatesBotApiClient
  * @property paymentsApi Interface for accessing Payments Telegram API (https://core.telegram.org/bots/api#payments)
  * @property gamesApi Interface for accessing Games Telegram API (https://core.telegram.org/bots/api#games)
  */
-interface BotApiClient {
+interface BotApiClient : TelegramApi {
     /**
      * Interface for accessing Common Telegram API (https://core.telegram.org/bots/api#available-methods)
      */
-    val commonApi: CommonBotApiClient
+    val commonApi: CommonBotApi
 
     /**
      * Interface for accessing Updating Messages Telegram API (https://core.telegram.org/bots/api#updating-messages)
      */
-    val messageEditingApi: MessageEditingBotApiClient
+    val messageEditingApi: MessageEditingBotApi
 
     /**
      * Interface for accessing Getting Updates Telegram API (https://core.telegram.org/bots/api#getting-updates)
      */
-    val updatesApi: UpdatesBotApiClient
+    val updatesApi: UpdatesBotApi
 
     /**
      * Interface for accessing Inline Mode Telegram API (https://core.telegram.org/bots/api#inline-mode)
      */
-    val inlineApi: InlineBotApiClient
+    val inlineApi: InlineBotApi
 
     /**
      * Interface for accessing Payments Telegram API (https://core.telegram.org/bots/api#payments)
      */
-    val paymentsApi: PaymentsBotApiClient
+    val paymentsApi: PaymentsBotApi
 
     /**
      * Interface for accessing Games Telegram API (https://core.telegram.org/bots/api#games)
      */
-    val gamesApi: GamesBotApiClient
+    val gamesApi: GamesBotApi
 
     /**
      * Interface for accessing Stickers Telegram API (https://core.telegram.org/bots/api#stickers)
      */
-    val stickersApi: StickersBotApiClient
+    val stickersApi: StickersBotApi
 
     companion object {
         /**

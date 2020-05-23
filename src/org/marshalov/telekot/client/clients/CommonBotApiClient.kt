@@ -1,7 +1,7 @@
-package org.marshalov.telekot.client.impl
+package org.marshalov.telekot.client.clients
 
 import io.ktor.client.HttpClient
-import org.marshalov.telekot.telegram.api.CommonBotApiClient
+import org.marshalov.telekot.telegram.api.CommonBotApi
 import org.marshalov.telekot.telegram.model.BotCommand
 import org.marshalov.telekot.telegram.model.Chat
 import org.marshalov.telekot.telegram.model.ChatMember
@@ -21,11 +21,11 @@ import org.marshalov.telekot.telegram.model.markers.ReplyMarkup
  * @param client KTOR HTTP Client instance
  */
 @Suppress("StringLiteralDuplication", "TooManyFunctions", "LargeClass")
-class CommonBotApiClientImpl(
+class CommonBotApiClient(
     apiToken: String,
     apiUrl: String? = null,
     client: HttpClient? = null
-) : CommonBotApiClient {
+) : CommonBotApi {
 
     override suspend fun getMe(): User =
         api.getMethodResult(this::getMe)

@@ -28,4 +28,36 @@ data class Response<T : Any>(
      * Optional field ‘parameters’ for some errors, which can help to automatically handle the error.
      */
     val parameters: ResponseParameters? = null
-)
+) {
+    companion object {
+        /**
+         * Create successful response.
+         * @param result Reulst of response
+         * @return Response wit `ok = true` and result.
+         */
+        @SuppressWarnings("FunctionMinLength")
+        inline fun <reified T : Any> ok(
+            result: T?
+        ): Response<T> =
+            Response(
+                ok = true,
+                result = result
+            )
+
+        /**
+         * Create failed response.
+         * @param description Error message.
+         * @param errorCode Code of error.
+         * @return Response with `ok = false`, description and errorCode.
+         */
+        inline fun <reified T : Any> fail(
+            description: String? = null,
+            errorCode: Int? = null
+        ): Response<T> =
+            Response(
+                ok = false,
+                description = description,
+                errorCode = errorCode
+            )
+    }
+}

@@ -9,7 +9,7 @@ import org.marshalov.telekot.telegram.model.payments.ShippingOption
  * Interface for Payments Telegram Bot API (https://core.telegram.org/bots/api#payments).
  */
 @Suppress("LongParameterList")
-interface PaymentsBotApiClient {
+interface PaymentsBotApi : TelegramApi {
     /**
      * Use this method to send invoices (https://core.telegram.org/bots/api#sendinvoice).
      * @param chatId Unique identifier for the target private chat

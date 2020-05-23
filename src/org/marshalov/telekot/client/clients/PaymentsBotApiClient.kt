@@ -1,7 +1,7 @@
-package org.marshalov.telekot.client.impl
+package org.marshalov.telekot.client.clients
 
 import io.ktor.client.HttpClient
-import org.marshalov.telekot.telegram.api.PaymentsBotApiClient
+import org.marshalov.telekot.telegram.api.PaymentsBotApi
 import org.marshalov.telekot.telegram.model.InlineKeyboardMarkup
 import org.marshalov.telekot.telegram.model.Message
 import org.marshalov.telekot.telegram.model.payments.LabeledPrice
@@ -13,11 +13,11 @@ import org.marshalov.telekot.telegram.model.payments.ShippingOption
  * @param apiUrl Root URL of Telegram API (https://api.telegram.org)
  * @param client KTOR HTTP Client instance
  */
-class PaymentsBotApiClientImpl(
+class PaymentsBotApiClient(
     apiToken: String,
     apiUrl: String? = null,
     client: HttpClient? = null
-) : PaymentsBotApiClient {
+) : PaymentsBotApi {
 
     override suspend fun sendInvoice(
         chatId: Long,

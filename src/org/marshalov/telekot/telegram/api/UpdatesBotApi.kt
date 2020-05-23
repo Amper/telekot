@@ -6,7 +6,7 @@ import org.marshalov.telekot.telegram.model.updates.WebhookInfo
 /**
  * Interface for Updates Telegram Bot API (https://core.telegram.org/bots/api#getting-updates).
  */
-interface UpdatesBotApiClient {
+interface UpdatesBotApi : TelegramApi {
     /**
      * Use this method to receive incoming updates using long polling (wiki). An Array of Update objects is returned.
      * (https://core.telegram.org/bots/api#getupdates)

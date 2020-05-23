@@ -1,4 +1,4 @@
-package org.marshalov.telekot.client.impl
+package org.marshalov.telekot.client.clients
 
 import io.ktor.client.HttpClient
 import io.ktor.client.request.post
@@ -6,6 +6,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
+import org.marshalov.telekot.client.clients.ApiClientWrapper.Companion.DEFAULT_API_URL
 import org.marshalov.telekot.client.exceptions.TelegramApiError
 import org.marshalov.telekot.client.factories.HttpClientFactory
 import org.marshalov.telekot.telegram.model.Response
