@@ -7,7 +7,7 @@ import org.marshalov.telekot.telegram.model.User
  *
  */
 @SuppressWarnings("LongParameterList")
-interface BotsDao {
+interface UsersDao {
     /**
      *
      */

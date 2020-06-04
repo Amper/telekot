@@ -1,7 +1,5 @@
 package org.marshalov.telekot.server.testing.controllers
 
-import org.marshalov.telekot.server.ApiController
-import org.marshalov.telekot.server.BotManager
 import org.marshalov.telekot.telegram.api.CommonBotApi
 import org.marshalov.telekot.telegram.model.BotCommand
 import org.marshalov.telekot.telegram.model.Chat
@@ -19,18 +17,10 @@ import org.marshalov.telekot.telegram.model.markers.ReplyMarkup
  *
  */
 @SuppressWarnings("TooManyFunctions", "StringLiteralDuplication")
-class TestCommonBotApiController : CommonBotApi, ApiController {
-
-    override fun setToken(token: String) {
-        this.token = token
-    }
-
-    override fun setBotManager(botManager: BotManager) {
-        this.botManager = botManager
-    }
+class TestCommonBotApiController : CommonBotApi, AbstractTestBotApiController() {
 
     override suspend fun getMe(): User =
-        botManager.getBotInfo(token)
+        manager.getBotInfo(token)
 
     override suspend fun sendMessage(
         chatId: String,
@@ -373,8 +363,8 @@ class TestCommonBotApiController : CommonBotApi, ApiController {
     override suspend fun setMyCommands(
         commands: List<BotCommand>
     ): Boolean {
-        val oldBotInfo = botManager.getBotInfo(token)
-        val newBotInfo = botManager.changeBotInfo(
+        val oldBotInfo = manager.getBotInfo(token)
+        val newBotInfo = manager.changeBotInfo(
             username = oldBotInfo.username ?: throw RuntimeException("TODO"),
             commands = commands
         )
@@ -382,10 +372,5 @@ class TestCommonBotApiController : CommonBotApi, ApiController {
     }
 
     override suspend fun getMyCommands(): List<BotCommand> =
-        botManager.getBotCommands(token)
-
-    private var token: String = ""
-
-    @SuppressWarnings("LateinitUsage")
-    private lateinit var botManager: BotManager
+        manager.getBotCommands(token)
 }

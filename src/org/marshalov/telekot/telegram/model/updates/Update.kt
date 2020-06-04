@@ -26,7 +26,7 @@ data class Update(
      * If there are no new updates for at least a week, t
      * hen identifier of the next update will be chosen randomly instead of sequentially.
      */
-    val updateId: Int? = null,
+    val updateId: Long? = null,
     /**
      * Optional. New incoming message of any kind — text, photo, sticker, etc.
      */

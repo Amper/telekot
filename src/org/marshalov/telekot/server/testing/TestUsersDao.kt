@@ -1,13 +1,13 @@
 package org.marshalov.telekot.server.testing
 
-import org.marshalov.telekot.server.dao.BotsDao
+import org.marshalov.telekot.server.dao.UsersDao
 import org.marshalov.telekot.telegram.model.BotCommand
 import org.marshalov.telekot.telegram.model.User
 
 /**
  *
  */
-class TestBotsDao : BotsDao {
+class TestUsersDao : UsersDao {
     override suspend fun saveBot(
         owner: String,
         token: String,
@@ -19,16 +19,21 @@ class TestBotsDao : BotsDao {
         joinGroups: Boolean,
         privacyMode: Boolean,
         inlineMode: Boolean
-    ): User {
+    ): User = synchronized(this) {
+        val botId = when {
+            username in bots -> bots[username]?.id
+            token in usernamesByToken -> bots[usernamesByToken[token]]?.id
+            else -> null
+        } ?: IdGenerator.getNextId()
         val botInfo = BotInfo(
-            id = IdGenerator.getNextId(),
+            id = botId,
             owner = owner,
             description = description,
             about = about,
             commands = commands.toMutableList()
         )
         val userInfo = User(
-            id = IdGenerator.getNextId(),
+            id = botId,
             isBot = true,
             firstName = name,
             username = username,
@@ -46,10 +51,8 @@ class TestBotsDao : BotsDao {
 
     override suspend fun tokenExists(
         token: String
-    ): Boolean {
-        val result = token in usernamesByToken
-        return result
-    }
+    ): Boolean =
+        token in usernamesByToken
 
     override suspend fun getBotByToken(
         token: String
@@ -65,7 +68,7 @@ class TestBotsDao : BotsDao {
             ?.takeIf { user -> user.isBot }
             ?: throw IllegalArgumentException("Not found Bot for this token")
 
-    // ------------------------------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------------------------- //
 
     private data class BotInfo(
         var id: Long,

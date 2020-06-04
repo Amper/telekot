@@ -4,7 +4,7 @@ import java.util.UUID
 import kotlin.math.absoluteValue
 import kotlin.random.Random
 import org.marshalov.telekot.server.BotManager
-import org.marshalov.telekot.server.dao.BotsDao
+import org.marshalov.telekot.server.dao.UsersDao
 import org.marshalov.telekot.telegram.model.BotCommand
 import org.marshalov.telekot.telegram.model.User
 
@@ -12,7 +12,7 @@ import org.marshalov.telekot.telegram.model.User
  *
  */
 class TestBotManager(
-    private val dao: BotsDao
+    private val dao: UsersDao
 ) : BotManager {
     override suspend fun createBot(
         owner: String,

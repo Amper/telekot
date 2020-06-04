@@ -17,9 +17,9 @@ interface UpdatesBotApi : TelegramApi {
      * @return List of Update objects
      */
     suspend fun getUpdates(
-        offset: Int? = null,
-        limit: Int? = null,
-        timeout: Int? = null,
+        offset: Long? = null,
+        limit: Long? = null,
+        timeout: Long? = null,
         // @TODO: enum
         allowedUpdates: List<String>? = null
     ): List<Update>

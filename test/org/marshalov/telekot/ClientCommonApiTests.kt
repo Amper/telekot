@@ -12,15 +12,15 @@ class ClientCommonApiTests : StringSpec({
         val server: BotServer = TestBotServer().run()
         val token = server.botManager.createBot(
             owner = "marshalov",
-            name = "amlbot",
-            username = "aml_test_bot"
+            name = "testbot",
+            username = "testbot"
         )
         val api = BotApiClient(token, apiUrl = server.apiUrl).commonApi
 
         "check getMe" {
             val user = api.getMe()
             user.isBot shouldBe true
-            user.username shouldBe "aml_test_bot"
+            user.username shouldBe "testbot"
         }
     }
 })

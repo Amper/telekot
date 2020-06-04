@@ -18,9 +18,9 @@ class UpdatesBotApiClient(
 ) : UpdatesBotApi {
 
     override suspend fun getUpdates(
-        offset: Int?,
-        limit: Int?,
-        timeout: Int?,
+        offset: Long?,
+        limit: Long?,
+        timeout: Long?,
         allowedUpdates: List<String>?
     ): List<Update> =
         api.getMethodResult(

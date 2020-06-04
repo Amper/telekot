@@ -20,7 +20,7 @@ import mu.KotlinLogging
 import org.marshalov.telekot.server.ApiControllerProvider
 import org.marshalov.telekot.server.BotManager
 import org.marshalov.telekot.server.BotServer
-import org.marshalov.telekot.server.dao.BotsDao
+import org.marshalov.telekot.server.dao.UsersDao
 import org.marshalov.telekot.server.exceptions.InvalidTokenError
 import org.marshalov.telekot.server.extensions.respond
 
@@ -28,9 +28,9 @@ import org.marshalov.telekot.server.extensions.respond
  *
  */
 class TestBotServer(
-    private val dao: BotsDao = TestBotsDao(),
+    private val dao: UsersDao = TestUsersDao(),
     override val botManager: BotManager = TestBotManager(dao),
-    override val apiControllerProvider: ApiControllerProvider = TestBotApiControllerProvider(botManager)
+    override val apiControllerProvider: ApiControllerProvider = TestBotApiControllerProvider(botManager, dao)
 ) : BotServer {
 
     override val apiUrl: String
