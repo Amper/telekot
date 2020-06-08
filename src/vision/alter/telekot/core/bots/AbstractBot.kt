@@ -14,7 +14,7 @@ abstract class AbstractBot(
     /**
      * Client for accessing Telegram APIs.
      */
-    protected open val apiClient: BotApiClient,
+    open val apiClient: BotApiClient,
     /**
      * Provider of telegram update events.
      */
