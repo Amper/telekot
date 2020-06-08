@@ -19,7 +19,7 @@ With Gradle:
 
 ```groovy
 dependencies {
-    compile(group: 'org.marshalov', name: 'telekot', version: "0.0.1-SNAPSHOT")
+    compile(group: 'vision.alter', name: 'telekot', version: "0.0.1-SNAPSHOT")
 }
 ```
 
@@ -27,14 +27,14 @@ With Gradle (Kotlin Script):
 
 ```kotlin
 dependencies {
-    implementation("org.marshalov:telekot:0.0.1-SNAPSHOT")
+    implementation("vision.alter:telekot:0.0.1-SNAPSHOT")
 }
 ```
 
 With Maven:
 ```xml
 <dependency>
-  <groupId>org.marshalov</groupId>
+  <groupId>vision.alter</groupId>
   <artifactId>telekot</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 </dependency>

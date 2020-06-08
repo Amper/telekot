@@ -127,7 +127,7 @@ naming:
     active: true
   InvalidPackageDeclaration:
     active: true
-    rootPackage: org.marshalov.telekot
+    rootPackage: vision.alter.telekot
   MatchingDeclarationName:
     active: true
   ObjectPropertyNaming:
