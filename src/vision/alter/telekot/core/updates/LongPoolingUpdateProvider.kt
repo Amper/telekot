@@ -22,7 +22,8 @@ import vision.alter.telekot.client.BotApiClient
 open class LongPoolingUpdateProvider(
     apiClient: BotApiClient,
     private val batchSize: Long = 100,
-    poolSize: Int = 4
+    poolSize: Int = 4,
+    private val timeout: Long = 1
 ) : AbstractUpdateProvider(apiClient) {
 
     override fun run() {
@@ -34,7 +35,7 @@ open class LongPoolingUpdateProvider(
                     val updates = apiClient.updatesApi.getUpdates(
                         offset = lastOffset,
                         limit = batchSize,
-                        timeout = 1
+                        timeout = timeout
                     )
                     withContext(handlersDispatcher) {
                         updates

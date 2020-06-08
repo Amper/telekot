@@ -25,7 +25,7 @@ interface CommonBotApi : TelegramApi {
 
     /**
      * Use this method to send text messages. On success, the sent Message is returned.
-     * (https://core.telegram.org/bots/api#sendmessage)
+     * (https://core.telegram.org/bots/api#sendmessage`)
      * @param chatId Unique identifier for the target chat or username of the target channel (in the format @channelusername)
      * @param text Text of the message to be sent, 1-4096 characters after entities parsing
      * @param parseMode Mode for parsing entities in the message text. See formatting options for more details.

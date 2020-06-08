@@ -23,7 +23,7 @@ open class LongPoolingBot(
     updateProvider: UpdateProdiver = LongPoolingUpdateProvider(
         apiClient
     ),
-    protected open val updateHandler: suspend LongPoolingBot.(update: Update) -> Unit
+    protected open val updateHandler: suspend AbstractBot.(update: Update) -> Unit
 ) : AbstractBot(apiClient, updateProvider) {
     override suspend fun onUpdate(update: Update) =
         this.updateHandler(update)

@@ -4,6 +4,7 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 // import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import mu.KotlinLogging
 // import vision.alter.telekot.core.bots.LongPoolingBot
 // import vision.alter.telekot.server.BotServer
 // import vision.alter.telekot.server.testing.TestBotServer
@@ -32,4 +33,8 @@ class SimpleBotTests : StringSpec({
             true shouldBe true
         }
     }
-})
+}) {
+    companion object {
+        private val logger = KotlinLogging.logger { }
+    }
+}
