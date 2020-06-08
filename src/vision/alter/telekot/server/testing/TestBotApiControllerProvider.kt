@@ -24,6 +24,7 @@ class TestBotApiControllerProvider(
         UpdatesBotApi::class
     )
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : TelegramApi> getApiController(token: String, apiControllerClass: KClass<out T>): T =
         when (apiControllerClass) {
             CommonBotApi::class -> this.getApiController<CommonBotApi, TestCommonBotApiController>(token)

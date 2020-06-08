@@ -19,7 +19,7 @@ abstract class AbstractBot(
      * Provider of telegram update events.
      */
     protected open val updateProvider: UpdateProdiver
-): Bot {
+) : Bot {
     override fun run() {
         updateProvider.subscribe(
             id = this::class.java.toString() + "->" + this.hashCode().toString(),

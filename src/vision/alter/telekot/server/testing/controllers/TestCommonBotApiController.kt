@@ -368,6 +368,7 @@ class TestCommonBotApiController : CommonBotApi, AbstractTestBotApiController() 
             username = oldBotInfo.username ?: throw RuntimeException("TODO"),
             commands = commands
         )
+        assert(oldBotInfo.username == newBotInfo.username)
         return true
     }
 

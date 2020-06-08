@@ -1,11 +1,12 @@
 package vision.alter.telekot.telegram.model
 
-import kotlinx.serialization.Serializable
+// import kotlinx.serialization.Serializable
 
 /**
  * Structure with a response to requests to Telegram apps (https://core.telegram.org/bots/api#making-requests).
  */
-@Serializable
+// @Serializable
+@SuppressWarnings("FunctionMinLength")
 data class Response<T : Any>(
     /**
      * Request result.
@@ -32,13 +33,12 @@ data class Response<T : Any>(
     companion object {
         /**
          * Create successful response.
-         * @param result Reulst of response
+         * @param result Result of response
          * @return Response wit `ok = true` and result.
          */
-        @SuppressWarnings("FunctionMinLength")
-        inline fun <reified T : Any> ok(
-            result: T?
-        ): Response<T> =
+        inline fun <reified R : Any> ok(
+            result: R?
+        ): Response<R> =
             Response(
                 ok = true,
                 result = result
@@ -50,10 +50,10 @@ data class Response<T : Any>(
          * @param errorCode Code of error.
          * @return Response with `ok = false`, description and errorCode.
          */
-        inline fun <reified T : Any> fail(
+        inline fun <reified R : Any> fail(
             description: String? = null,
             errorCode: Int? = null
-        ): Response<T> =
+        ): Response<R> =
             Response(
                 ok = false,
                 description = description,
