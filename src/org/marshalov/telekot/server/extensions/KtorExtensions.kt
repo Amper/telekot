@@ -9,7 +9,7 @@ import org.marshalov.telekot.telegram.model.Response
 /**
  * Send Responce for block in routing.
  */
-suspend inline fun <reified T : Any?> PipelineContext<Unit, ApplicationCall>.respond(block: () -> T) {
+suspend inline fun <reified T : Any> PipelineContext<Unit, ApplicationCall>.respond(block: () -> T?) {
     call.respond(
         try {
             Response.ok(block())

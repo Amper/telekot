@@ -1,43 +1,24 @@
 package org.marshalov.telekot.core
 
-import org.marshalov.telekot.client.BotApiClient
 import org.marshalov.telekot.telegram.model.updates.Update
 
 /**
- *
+ * Interface for creating telegram bot implementations.
  */
 interface Bot {
     /**
-     *
+     * Run bot (processing messages).
      */
-    val apiClient: BotApiClient
+    fun run()
 
     /**
-     *
+     * Stop bot.
      */
-    val updateProvider: UpdateProdiver
+    fun stop()
 
     /**
-     *
-     */
-    fun run() {
-        updateProvider.subscribe(
-            id = this::class.java.toString() + "->" + this.hashCode().toString(),
-            handler = ::onUpdate
-        )
-        updateProvider.run()
-    }
-
-    /**
-     *
-     */
-    fun stop() {
-        updateProvider.stop()
-        updateProvider.resetSubscriptions()
-    }
-
-    /**
-     *
+     * This method is called when the next event (update) is received.
+     * @param update Full information about the received update.
      */
     suspend fun onUpdate(update: Update)
 }

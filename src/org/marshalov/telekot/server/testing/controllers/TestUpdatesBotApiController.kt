@@ -7,7 +7,7 @@ import org.marshalov.telekot.telegram.model.updates.WebhookInfo
 /**
  *
  */
-@SuppressWarnings("TooManyFunctions", "StringLiteralDuplication")
+@SuppressWarnings("StringLiteralDuplication")
 class TestUpdatesBotApiController : UpdatesBotApi, AbstractTestBotApiController() {
     override suspend fun getUpdates(
         offset: Long?,
@@ -15,7 +15,7 @@ class TestUpdatesBotApiController : UpdatesBotApi, AbstractTestBotApiController(
         timeout: Long?,
         allowedUpdates: List<String>?
     ): List<Update> {
-        return listOf(Update(updateId = 1))
+        return emptyList()
     }
 
     override suspend fun setWebhook(

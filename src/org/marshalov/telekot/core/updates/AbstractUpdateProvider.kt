@@ -6,7 +6,9 @@ import org.marshalov.telekot.core.UpdateProdiver
 import org.marshalov.telekot.telegram.model.updates.Update
 
 /**
- *
+ * Abstract class for providers of telegram update events
+ * (contains simple logic for working with subscriptions).
+ * @param apiClient Telegram Bot API Client.
  */
 abstract class AbstractUpdateProvider(
     protected val apiClient: BotApiClient

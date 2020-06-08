@@ -2,7 +2,9 @@ package org.marshalov.telekot.server
 
 /**
  * Telegram Bot API Server.
+ * @property apiUrl API URL of this server
  * @property botManager Bot Manager for this server (BotManager similar in functionality to @BotFather in Telegram)
+ * @property apiControllerProvider Provider of controllers for specified token.
  */
 interface BotServer {
     /**
@@ -16,7 +18,7 @@ interface BotServer {
     val botManager: BotManager
 
     /**
-     *
+     * Provider of controllers for specified token.
      */
     val apiControllerProvider: ApiControllerProvider
 

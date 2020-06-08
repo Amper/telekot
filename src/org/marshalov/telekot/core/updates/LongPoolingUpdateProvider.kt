@@ -13,7 +13,10 @@ import kotlinx.coroutines.withContext
 import org.marshalov.telekot.client.BotApiClient
 
 /**
- *
+ * Provider of update events based on the long pooling method.
+ * @param apiClient Telegram Bot API Client.
+ * @param batchSize The number of messages to retrieve in a single query.
+ * @param poolSize Number of threads to process events.
  */
 @SuppressWarnings("GlobalCoroutineUsage")
 open class LongPoolingUpdateProvider(
