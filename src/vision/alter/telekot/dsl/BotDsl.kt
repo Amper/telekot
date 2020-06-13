@@ -6,6 +6,7 @@ import vision.alter.telekot.client.BotApiClient
  *
  */
 @BotDslMarker
+@SuppressWarnings("LateinitUsage")
 data class BotDsl(
     var updatingType: BotUpdatingType = LongPooling(),
     var apiToken: String? = null,

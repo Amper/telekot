@@ -18,51 +18,70 @@ Using a JVM dependency manager, simply link `telekot` to your project.
 With Gradle:
 
 ```groovy
-    dependencies {
-        compile(group: 'vision.alter', name: 'telekot', version: "0.0.1-SNAPSHOT")
-    }
+dependencies {
+    compile(group: 'vision.alter', name: 'telekot', version: "0.0.1-SNAPSHOT")
+}
 ```
 
 With Gradle (Kotlin Script):
 
 ```kotlin
-    dependencies {
-        implementation("vision.alter:telekot:0.0.1-SNAPSHOT")
-    }
+dependencies {
+    implementation("vision.alter:telekot:0.0.1-SNAPSHOT")
+}
 ```
 
 With Maven:
 ```xml
-    <dependency>
-      <groupId>vision.alter</groupId>
-      <artifactId>telekot</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-    </dependency>
+<dependency>
+  <groupId>vision.alter</groupId>
+  <artifactId>telekot</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
 ```
 
 ## ⌨️ Usage
 
 ### Usage of Simple Client
 
-...
+```kotlin
+val api = BotApiClient(token)
+val msg = api.commonApi.sendMessage(
+    chatId = "1234",
+    text = "Hello, world!"
+)
+```
 
 ### Usage of Simple Bot
 
 ```kotlin
-    val repeatingBot = LongPoolingBot(token) { update ->
-        val message = update.message ?: return@LongPoolingBot
-        apiClient.commonApi.sendMessage(
-            chatId = "${message.chat.id}",
-            text = "message text: ${message.text}",
-            replyToMessageId = message.messageId
-        )
-    }
-    repeatingBot.run()
+val repeatingBot = LongPoolingBot(token) { update ->
+    val message = update.message ?: return@LongPoolingBot
+    apiClient.commonApi.sendMessage(
+        chatId = "${message.chat.id}",
+        text = "message text: ${message.text}",
+        replyToMessageId = message.messageId
+    )
+}
+repeatingBot.run()
 ```
 
 ### Usage of Bot DSL
 
-...
+```kotlin
+bot {
+    apiToken = "TOKEN"
+    updatingType = LongPooling(batchSize = 100, timeout = 1)
+
+    command("start") { event ->
+        event.answer("Hello, ${event.user.username}")
+    }
+
+    unknownCommand { event ->
+        event.answer("Unknown command: ${event.command.name}")
+    }
+}
+```
 
 ### Usage of Test Server
 

@@ -55,19 +55,8 @@ interface BotApiClient : TelegramApi {
      */
     val stickersApi: StickersBotApi
 
-    companion object {
-        /**
-         * Special factory method for creating API Client Instance.
-         * @param apiToken Unique authentification token (https://core.telegram.org/bots/api#authorizing-your-bot)
-         * @param apiUrl Root URL of Telegram API (https://api.telegram.org)
-         * @param client KTOR HTTP Client instance
-         * @return Instance of BotApiClient
-         */
-        operator fun invoke(
-            apiToken: String,
-            apiUrl: String? = null,
-            client: HttpClient? = null
-        ): BotApiClient =
-            BotApiClientFactory.createApiClient(apiToken, apiUrl, client)
-    }
+    /**
+     * Empty companion object for creating extensions factories.
+     */
+    companion object
 }

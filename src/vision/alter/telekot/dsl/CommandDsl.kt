@@ -1,5 +1,8 @@
 package vision.alter.telekot.dsl
 
+/**
+ *
+ */
 @BotDslMarker
 data class CommandDsl(
     internal val bot: BotDsl,

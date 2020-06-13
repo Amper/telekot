@@ -8,6 +8,7 @@ import vision.alter.telekot.telegram.model.User
  *
  */
 @BotDslMarker
+@SuppressWarnings("LateinitUsage")
 data class EventDsl(
     internal val command: CommandDsl,
     val message: Message,
