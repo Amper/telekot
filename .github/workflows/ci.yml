@@ -38,6 +38,10 @@ jobs:
         run: gradle clean build
         env:
           TEST_TELEGRAM_BOT_TOKEN: ${{ secrets.TEST_TELEGRAM_BOT_TOKEN }}
+      - name: Publish to Maven
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gradle publish
       - name: Bundle the build report
         run: find . -type d -name 'reports' | zip -@ -r reports.zip
       - name: Upload the build report

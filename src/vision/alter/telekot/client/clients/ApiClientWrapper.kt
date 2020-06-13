@@ -79,6 +79,7 @@ class ApiClientWrapper(
      * @return Telegram API Response
      * @see vision.alter.telekot.telegram.model.Response
      */
+    @SuppressWarnings("UNUSED_PARAMETER")
     suspend inline fun <reified T : Any, reified R : Response<T>> getResponse(
         methodName: String,
         parameters: Map<String, Any?> = emptyMap(),

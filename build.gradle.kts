@@ -1,8 +1,13 @@
 import java.time.Instant
+import org.jetbrains.kotlin.gradle.dsl.Coroutines
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val group: String by project
-val version: String by project
+val telekotArtifact: String by project
+val telekotGroup: String by project
+val telekotVersion: String by project
+val telekotAuthor: String by project
+val telekotDescription: String by project
+val telekotUrl: String by project
 val ktorVersion: String by project
 val kotlinVersion: String by project
 val logbackVersion: String by project
@@ -13,10 +18,12 @@ val mockkVersion: String by project
 val detektVersion: String by project
 val jacocoVersion: String by project
 val junitVersion: String by project
-val author: String by project
 
-description = "Library for creating Telegram bots."
-extra["isReleaseVersion"] = !version.endsWith("SNAPSHOT")
+description = telekotDescription
+group = telekotGroup
+version = telekotVersion
+
+extra["isReleaseVersion"] = !telekotVersion.endsWith("SNAPSHOT")
 
 plugins {
     kotlin("jvm")
@@ -26,6 +33,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint")
     jacoco
     maven
+    `maven-publish`
 }
 
 repositories {
@@ -36,6 +44,12 @@ repositories {
     maven { url = uri("https://kotlin.bintray.com/kotlinx") }
     maven { url = uri("https://dl.bintray.com/microutils/kotlin-logging") }
     maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap/") }
+}
+
+configurations {
+    implementation {
+        resolutionStrategy.failOnVersionConflict()
+    }
 }
 
 dependencies {
@@ -99,7 +113,7 @@ tasks {
     }
     jar {
         manifest {
-            attributes["Built-By"] = author
+            attributes["Built-By"] = telekotAuthor
             attributes["Build-Jdk"] =
                 "${System.getProperty("java.version")} (${System.getProperty("java.vendor")} ${System.getProperty("java.vm.version")})"
             attributes["Build-Timestamp"] = Instant.now().toString()
@@ -111,11 +125,87 @@ tasks {
     test {
         useJUnitPlatform()
         finalizedBy(jacocoTestReport)
+        testLogging {
+            showStackTraces = true
+            showExceptions = true
+            showCauses = true
+        }
     }
 }
 
-kotlin.sourceSets["main"].kotlin.srcDirs("src")
-kotlin.sourceSets["test"].kotlin.srcDirs("test")
+kotlin {
+    experimental {
+        coroutines = Coroutines.ENABLE
+    }
+    sourceSets {
+        all {
+            languageSettings.progressiveMode = true
+            languageSettings.languageVersion = "1.4"
+            languageSettings.apiVersion = "1.4"
+            languageSettings.enableLanguageFeature("InlineClasses")
+        }
+        main {
+            kotlin.srcDir("src")
+            resources.srcDir("resources")
+        }
+        test {
+            kotlin.srcDir("test")
+            resources.srcDir("testresources")
+        }
+    }
+}
 
-sourceSets["main"].resources.srcDirs("resources")
-sourceSets["test"].resources.srcDirs("testresources")
+publishing {
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/alter-vision")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = telekotGroup
+            artifactId = telekotArtifact
+            version = telekotVersion
+            description = telekotDescription
+
+            from(components["java"])
+
+            pom {
+                name.set(telekotArtifact)
+                description.set(telekotDescription)
+                url.set(telekotUrl)
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("Amper")
+                        name.set("Alexander Marshalov")
+                        email.set("_@marshalov.org")
+                    }
+                    developer {
+                        id.set("eyrikh-n")
+                        name.set("Nikita Eyrikh")
+                    }
+                    developer {
+                        id.set("nikolko")
+                        name.set("Nikolaev Sergey")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/alter-vision/telekot.git")
+                    developerConnection.set("scm:git:git://github.com/alter-vision/telekot.git")
+                    url.set("https://github.com/alter-vision/telekot")
+                }
+            }
+        }
+    }
+}
