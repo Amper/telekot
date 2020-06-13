@@ -1,6 +1,7 @@
 package vision.alter.telekot.dsl
 
 import vision.alter.telekot.client.BotApiClient
+import vision.alter.telekot.client.invoke
 import vision.alter.telekot.core.Bot
 import vision.alter.telekot.core.bots.AbstractBot
 import vision.alter.telekot.core.bots.LongPoolingBot

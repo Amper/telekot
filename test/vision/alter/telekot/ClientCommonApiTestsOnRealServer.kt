@@ -4,6 +4,7 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.runBlocking
 import vision.alter.telekot.client.BotApiClient
+import vision.alter.telekot.client.invoke
 
 class ClientCommonApiTestsOnRealServer : StringSpec({
     runBlocking {

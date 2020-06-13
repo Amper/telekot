@@ -1,6 +1,7 @@
 package vision.alter.telekot.core.bots
 
 import vision.alter.telekot.client.BotApiClient
+import vision.alter.telekot.client.invoke
 import vision.alter.telekot.core.UpdateProdiver
 import vision.alter.telekot.core.updates.LongPoolingUpdateProvider
 import vision.alter.telekot.telegram.model.updates.Update
