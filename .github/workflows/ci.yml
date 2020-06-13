@@ -41,7 +41,7 @@ jobs:
       - name: Publish to Maven
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gradle publish
+        run: gradle -Pversion=0.0.1-SNAPSHOT publish
       - name: Bundle the build report
         run: find . -type d -name 'reports' | zip -@ -r reports.zip
       - name: Upload the build report
