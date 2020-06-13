@@ -1,7 +1,5 @@
 package vision.alter.telekot.client
 
-import io.ktor.client.HttpClient
-import vision.alter.telekot.client.factories.BotApiClientFactory
 import vision.alter.telekot.telegram.api.CommonBotApi
 import vision.alter.telekot.telegram.api.GamesBotApi
 import vision.alter.telekot.telegram.api.InlineBotApi

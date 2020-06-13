@@ -1,8 +1,8 @@
 package vision.alter.telekot.client
 
 import io.ktor.client.HttpClient
-import vision.alter.telekot.client.factories.BotApiClientFactory
 import kotlin.reflect.KClass
+import vision.alter.telekot.client.factories.BotApiClientFactory
 
 /**
  * Special factory method for creating API Client Instance.

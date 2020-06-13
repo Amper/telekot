@@ -12,13 +12,13 @@ import vision.alter.telekot.telegram.model.updates.Update
  *
  */
 @BotDslMarker
-fun bot(init: BotDsl.() -> Unit): Bot =
+fun bot(token: String? = null, init: BotDsl.() -> Unit): Bot =
     BotDsl()
         .let { bot ->
             bot.init()
             return when (val updatingType = bot.updatingType) {
                 is LongPooling -> run {
-                    val apiToken = bot.apiToken ?: throw RuntimeException("No token specified!")
+                    val apiToken = bot.apiToken ?: token ?: throw RuntimeException("No token specified!")
                     val apiUrl = bot.apiUrl
                     bot.apiClient = BotApiClient(apiToken, apiUrl)
                     LongPoolingBot(apiToken, apiUrl, bot.apiClient,
@@ -61,3 +61,13 @@ private suspend inline fun AbstractBot.handleEvent(bot: BotDsl, update: Update) 
         else -> return // @TODO
     }
 }
+
+/**
+ *
+ */
+@BotDslMarker
+fun poolingBot(token: String?, init: BotDsl.() -> Unit): Bot =
+    bot(token) {
+        updatingType = LongPooling()
+        init()
+    }
