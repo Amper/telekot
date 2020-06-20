@@ -8,6 +8,7 @@ import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
 import vision.alter.telekot.client.clients.ApiClientWrapper.Companion.DEFAULT_API_URL
 import vision.alter.telekot.client.exceptions.TelegramApiError
+import vision.alter.telekot.client.exceptions.TelegramApiNullResultError
 import vision.alter.telekot.client.factories.HttpClientFactory
 import vision.alter.telekot.telegram.model.Response
 
@@ -108,9 +109,8 @@ class ApiClientWrapper(
                     response.errorCode,
                     response.description
                 )
-            // @TODO: Create class for this exception
             response.result == null ->
-                throw RuntimeException("An null value was returned for result in the method `getMe` in the Telegram API")
+                throw TelegramApiNullResultError(methodName)
             else ->
                 response.result
         }
